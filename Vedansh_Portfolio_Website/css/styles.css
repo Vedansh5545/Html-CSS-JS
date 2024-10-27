@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-theme {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.vibrant-theme {
+    background-color: #fffbec;
+    color: #333;
+}
+
+button#theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.headshot {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+.fancy-heading {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2em;
+}
+
+.project {
+    margin: 20px 0;
+}
+
+.social-links a {
+    margin-right: 10px;
+}
+
+section {
+    padding: 40px;
+    text-align: center;
+}
