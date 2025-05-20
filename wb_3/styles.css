@@ -1,0 +1,10 @@
+body {
+  font-family: 'Orbitron', sans-serif;
+  background-color: #0f172a;
+  color: white;
+}
+
+.neon {
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+}
