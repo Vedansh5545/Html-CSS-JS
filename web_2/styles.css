@@ -1,0 +1,11 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+section {
+  background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+}
+
+img {
+  border: 4px solid #fff;
+}
