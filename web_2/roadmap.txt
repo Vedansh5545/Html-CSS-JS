@@ -1,0 +1,200 @@
+## Vedansh Tembhre Portfolio Website Plan
+
+---
+
+### 📊 Project Goal
+
+Build a modern, immersive AI-powered portfolio website that showcases Vedansh's achievements, research, and projects in an interactive and futuristic format.
+
+---
+
+## 🏠 Website Structure & Animation Ideas
+
+### ✩ 1. Hero Section
+
+**Components:**
+
+* Name: "Vedansh Tembhre | AI Researcher & Developer"
+* One-liner: "Building intelligent systems and immersive web experiences."
+* Avatar: "Vedansh as Human" (animated)
+
+**Animation Ideas:**
+
+* Typewriter effect on tagline
+* Avatar waves/blinks on load (CSS/Three.js)
+* AI particle background (animated orbs)
+* Hover ripple effect on CTA button
+* Cursor-following avatar eyes
+
+---
+
+### ✩ 2. About Me
+
+**Content:**
+
+* Brief bio (education, research passion)
+* Awards highlight (e.g., UNT Excellence-Scrappy Award)
+* Resume download
+
+**Animation Ideas:**
+
+* Scroll-triggered fade-in
+* Resume button with glowing border on hover
+* Shine animation on award badge
+
+---
+
+### ✩ 3. Projects Gallery
+
+**Projects to Showcase:**
+
+* ASL Learning Platform (Angular + Firebase + PyTorch)
+* Pose Estimation Pipeline (GNN + Transformer)
+* Stock Price Predictor (TensorFlow)
+* Chrome Plugin (To-Do + Tab Saver)
+
+**Card Content:**
+
+* Title & Tech stack
+* Description
+* GitHub/Demo link
+* Tags (e.g., #AI, #WebDev)
+
+**UI Ideas:**
+
+* 3D Flip cards
+* Hover tilt/zoom effect
+* Tag animation delay
+* Filterable project tags
+* Muted dark theme tones: dark gray/dark slate card backgrounds with subtle blue/purple glows on hover for contrast
+
+---
+
+### ✩ 4. Research
+
+**Content:**
+
+* Titles, venues, abstracts
+* Links to PDFs or DOI
+
+**Animation Ideas:**
+
+* Flip cards with citation previews
+* Modal popup for full abstract
+* Citation copy button
+* Scroll-triggered fade in
+
+---
+
+### ✩ 5. Experience
+
+**Content:**
+
+* Internships (Springer Capital, Genius Armoury)
+* Teaching (UNT Lead Tutor)
+* Fellowships & Research
+
+**Animation Ideas:**
+
+* Animated vertical timeline
+* Company logos fade-in
+* SVG line drawing animation
+
+---
+
+### ✩ 6. Skills (Visual)
+
+**Categories:**
+
+* Languages: C++, Python, JS, SQL, x86
+* Frameworks: PyTorch, TensorFlow, React, Angular
+* Tools: Git, Jira, Firebase, ROS
+
+**UI Ideas:**
+
+* Circular skill progress bars
+* Hover glow with tooltips
+* Animate progress rings on scroll
+
+---
+
+### ✩ 7. Certifications & Achievements
+
+**Certifications:**
+
+* Intel Data Analysis
+* Apple Pathways Scholar
+* Youth Speak Forum
+
+**UI Ideas:**
+
+* Digital badge visuals
+* Carousel or grid display
+* Zoom/shine on hover
+
+---
+
+### ✩ 8. Blog / Updates (Optional)
+
+**Topics:**
+
+* Pose estimation progress
+* ASL model improvements
+* AI ethics insights
+
+**Animation Ideas:**
+
+* Auto-type blog titles
+* Expand on hover
+* Slide-in post cards
+
+---
+
+### ✩ 9. Contact Section
+
+**Content:**
+
+* Form with validation
+* Email, phone, LinkedIn, GitHub
+* QR Code to resume
+
+**Animation Ideas:**
+
+* Real-time field feedback
+* Success animation (checkmark/confetti)
+* QR code popup or scan icon
+
+---
+
+### ✩ 10. Themes & Global Animations
+
+**Features:**
+
+* Dark <-> Vibrant theme toggle
+* Animated robot/avatar guide
+* Parallax circuit backgrounds
+* Real-time interaction (chatbot or mini-game)
+
+**Tech Suggestions:**
+
+* GSAP, AOS for animation
+* Three.js for avatar rendering
+* CSS variables for theme switching
+* ScrollMagic or Locomotive Scroll
+
+---
+
+### ✅ Tools & Libraries
+
+| Feature            | Tool                         |
+| ------------------ | ---------------------------- |
+| Animation          | GSAP, AOS, CSS               |
+| Scroll effects     | ScrollMagic, Locomotive      |
+| Avatar interaction | Three.js, Lottie             |
+| Form backend       | EmailJS, FormSubmit          |
+| Icons              | Bootstrap Icons, FontAwesome |
+| QR Code            | qrcode.js or SVG QR          |
+
+---
+
+
