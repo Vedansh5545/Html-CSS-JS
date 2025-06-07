@@ -96,6 +96,53 @@
     .flip-card:hover .card-front {
       background-color: #27364a;
     }
+    .avatar-img {
+        box-shadow: 0 0 20px #0dcaf0;
+        transition: transform 0.3s ease;
+        }
+        .avatar-img:hover {
+        transform: scale(1.05);
+        }
+
+        .hero-bg {
+        background: radial-gradient(circle at top left, #1e293b 0%, #0f172a 100%);
+        opacity: 0.3;
+        z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+        .hero-bg {
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+        }
+        }
+    /* Starfield Background Layers */
+    .stars, .stars2, .stars3 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0; left: 0;
+    background: transparent url('https://raw.githubusercontent.com/Vedansh5545/assets/main/stars1.png') repeat;
+    animation: moveStars 200s linear infinite;
+    z-index: -2;
+    }
+
+    .stars2 {
+    background-image: url('https://raw.githubusercontent.com/Vedansh5545/assets/main/stars2.png');
+    animation: moveStars 400s linear infinite;
+    z-index: -3;
+    }
+
+    .stars3 {
+    background-image: url('https://raw.githubusercontent.com/Vedansh5545/assets/main/stars3.png');
+    animation: moveStars 600s linear infinite;
+    z-index: -4;
+    }
+
+    @keyframes moveStars {
+    from { background-position: 0 0; }
+    to { background-position: -10000px 5000px; }
+    }
+
   </style>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80" tabindex="0">
@@ -122,13 +169,22 @@
   </nav>
 
   <!-- Hero Section -->
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center text-center vh-100">
-    <img src="avatar_placeholder.png" alt="Vedansh as Human" class="rounded-circle mb-4" width="160" height="160">
-    <h1 class="display-4 fw-bold">Vedansh Tembhre</h1>
-    <p class="lead typewriter">AI Researcher & Developer</p>
-    <p>Building intelligent systems and immersive web experiences.</p>
-    <a href="#projects" class="btn btn-outline-info mt-3">Explore Projects</a>
-  </section>
+    <section id="hero" class="d-flex flex-column justify-content-center align-items-center text-center vh-100 position-relative overflow-hidden">
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+
+    <div class="hero-bg position-absolute top-0 start-0 w-100 h-100 z-n1"></div>
+
+    <img src="avatar_placeholder.png" alt="Vedansh as Human" class="rounded-circle mb-4 avatar-img" width="160" height="160" data-aos="fade-down">
+
+    <h1 class="display-4 fw-bold" data-aos="fade-up" data-aos-delay="100">Vedansh Tembhre</h1>
+    <p class="lead typewriter" data-aos="fade-up" data-aos-delay="200">AI Researcher & Developer</p>
+    <p data-aos="fade-up" data-aos-delay="300">Building intelligent systems and immersive web experiences.</p>
+
+    <a href="#projects" class="btn btn-outline-info mt-3" data-aos="fade-up" data-aos-delay="400">Explore Projects</a>
+    </section>
+
 
   <!-- About Me -->
   <section id="about">
@@ -260,6 +316,16 @@
   <script>
     AOS.init({ duration: 800, once: true });
   </script>
+  <script>
+  document.querySelector('.avatar-img').addEventListener('mousemove', (e) => {
+    const rotate = (e.clientX / window.innerWidth - 0.5) * 10;
+    e.target.style.transform = `rotateZ(${rotate}deg) scale(1.05)`;
+  });
+  document.querySelector('.avatar-img').addEventListener('mouseleave', (e) => {
+    e.target.style.transform = 'rotateZ(0deg)';
+  });
+</script>
+
 
 </body>
 </html>
