@@ -127,3 +127,31 @@ footer {
 .flip-card-back {
   transform: rotateY(180deg);
 }
+
+.card-front, .card-back {
+  padding: 20px;
+  border-radius: 10px;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.card-front {
+  background-color: #1e293b;
+  color: #0dcaf0;
+}
+
+.card-back {
+  background-color: #111827;
+  color: #ffffff;
+}
+
+.card-back a {
+  margin-top: 10px;
+}
+
+.flip-card:hover .card-front {
+  background-color: #27364a;
+}
