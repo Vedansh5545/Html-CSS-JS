@@ -1,20 +1,30 @@
-/* ───── Reset & Base ───── */
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
+/*──────────────────────────────────────────────────────────────────────────────
+   Reset & Base
+──────────────────────────────────────────────────────────────────────────────*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
 body {
   background: #0f172a;
   color: #fff;
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* ───── Typography ───── */
-h1,h2,h3, .navbar-brand { font-family:'Orbitron', sans-serif; }
+/*──────────────────────────────────────────────────────────────────────────────
+   Typography
+──────────────────────────────────────────────────────────────────────────────*/
+h1, h2, h3, .navbar-brand {
+  font-family: 'Orbitron', sans-serif;
+}
 
-/* ───── Layout ───── */
-section { padding:100px 0; }
-.navbar-nav .nav-link.active { color:#0dcaf0 !important; }
-
-/* ───── Section Layout ───── */
+/*──────────────────────────────────────────────────────────────────────────────
+   Layout & Navigation
+──────────────────────────────────────────────────────────────────────────────*/
 section {
   padding: 100px 0;
 }
@@ -22,43 +32,107 @@ section {
   color: #0dcaf0 !important;
 }
 
-/* ───── About Me Decorations ───── */
+/*──────────────────────────────────────────────────────────────────────────────
+   Hero Section
+──────────────────────────────────────────────────────────────────────────────*/
+#hero {
+  position: relative;
+  overflow: hidden;
+  background: transparent; /* remove any solid/radial gradient here */
+}
+
+#hero-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Avatar styling */
+.avatar-img {
+  border: 4px solid #0dcaf0;
+  box-shadow: 0 0 20px #0dcaf0;
+  transition: transform 0.3s ease;
+}
+.avatar-img:hover {
+  transform: scale(1.05) rotateZ(3deg);
+}
+
+/* Typewriter heading */
+.typewriter {
+  overflow: hidden;
+  border-right: 3px solid #0dcaf0;
+  white-space: nowrap;
+  animation: typing 4s steps(40,end), blink 0.75s step-end infinite;
+  display: inline-block;
+  max-width: 100%;
+}
+@keyframes typing {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* Hero button */
+.btn-outline-info {
+  border-radius: 50px;
+  padding: 10px 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-outline-info:hover {
+  background: #0dcaf0;
+  color: #000;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(13,202,240,0.6);
+}
+
+/*──────────────────────────────────────────────────────────────────────────────
+   About Me Section
+──────────────────────────────────────────────────────────────────────────────*/
 #about {
   background-color: #1e293b;
   position: relative;
   overflow: hidden;
 }
-.decorative-circle {
-  position: absolute;
-  width: 200px; height: 200px;
-  background: rgba(13,202,240,0.2);
-  border-radius: 50%;
-  top: -50px; left: -50px;
-  z-index: 0;
-}
+.decorative-circle,
 .decorative-circle2 {
   position: absolute;
+  border-radius: 50%;
+  z-index: 0;
+  animation: float 6s ease-in-out infinite;
+}
+.decorative-circle {
+  width: 200px; height: 200px;
+  background: rgba(13,202,240,0.2);
+  top: -50px; left: -50px;
+}
+.decorative-circle2 {
   width: 300px; height: 300px;
   background: rgba(15,23,42,0.3);
-  border-radius: 50%;
   bottom: -100px; right: -100px;
-  z-index: 0;
-}
-.container.position-relative {
-  z-index: 1;
+  animation-duration: 8s;
 }
 
-/* Avatar Floating Animation */
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-10px); }
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-10px); }
 }
+
 .about-avatar {
   border: 4px solid #0dcaf0;
   animation: float 6s ease-in-out infinite;
 }
 
-/* Underlined Section Title */
 .about-title {
   position: relative;
   display: inline-block;
@@ -74,107 +148,45 @@ section {
   border-radius: 2px;
 }
 
-/* About Text & List */
 .about-text {
   font-size: 1rem;
   line-height: 1.6;
 }
-.about-list li i {
-  font-size: 1.2rem;
-  margin-top: 4px;
-}
 .about-list li {
+  display: flex;
+  align-items: start;
+  margin-bottom: 0.5rem;
   font-size: 0.95rem;
 }
-
-/* ───── Hero Section ───── */
-#hero {
-  background: radial-gradient(circle at center, #1e293b, #0f172a);
-  text-align: center;
-  position: relative;
-    overflow: hidden;
-
+.about-list li i {
+  font-size: 1.2rem;
+  color: #0dcaf0;
+  margin-right: 0.5rem;
 }
 
-#hero img {
-  border: 4px solid #0dcaf0;
-  box-shadow: 0 0 20px #0dcaf0;
-  transition: transform 0.3s ease;
+/*──────────────────────────────────────────────────────────────────────────────
+   Projects Gallery
+──────────────────────────────────────────────────────────────────────────────*/
+#projects {
+  background: #0f172a;
 }
-
-#hero img:hover {
-  transform: scale(1.05);
-}
-
-/* Typewriter Effect */
-.typewriter {
-  overflow: hidden;
-  border-right: 3px solid #0dcaf0;
-  white-space: nowrap;
-  animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
-  display: inline-block;
-  max-width: 100%;
-}
-
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blink {
-  50% { border-color: transparent; }
-}
-
-/* Buttons */
-.btn-outline-info {
-  border-radius: 50px;
-  padding: 10px 25px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.btn-outline-info:hover {
-  background-color: #0dcaf0;
-  color: #000;
-  box-shadow: 0 0 15px #0dcaf0;
-  transform: scale(1.05);
-}
-
-/* Navbar Highlight */
-.navbar-nav .nav-link.active {
-  color: #0dcaf0 !important;
-}
-
-/* AOS Placeholder (optional) */
-[data-aos] {
-  opacity: 0;
-  transition-property: opacity, transform;
-  transition-duration: 0.8s;
-}
-
-[data-aos].aos-animate {
-  opacity: 1;
-}
-
-/* ───── About Me ───── */
-/* ───── Projects Gallery ───── */
-#projects { background:#0f172a; }
 .project-filters .filter-btn {
-  margin:0 5px 10px;
-  padding:8px 20px;
-  border:2px solid #0dcaf0;
-  border-radius:50px;
-  background:transparent;
-  color:#0dcaf0;
-  transition:.3s;
-  cursor:pointer;
+  margin: 0 5px 10px;
+  padding: 8px 20px;
+  border: 2px solid #0dcaf0;
+  border-radius: 50px;
+  background: transparent;
+  color: #0dcaf0;
+  transition: 0.3s;
+  cursor: pointer;
 }
 .project-filters .filter-btn.active,
 .project-filters .filter-btn:hover {
-  background:#0dcaf0; color:#000;
+  background: #0dcaf0;
+  color: #000;
 }
 
-/* ───── New Flip-Card Styles ───── */
+/* Flip-card */
 .flip-card-container {
   perspective: 1000px;
 }
@@ -191,60 +203,61 @@ section {
 }
 .flip-card-face {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  top:0; left:0;
+  width: 100%; height: 100%;
+  top: 0; left: 0;
   backface-visibility: hidden;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
   background: #1e293b;
   color: #fff;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
 }
 .flip-card-front img {
-  width:100%;
-  height:200px;
-  object-fit:cover;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
-.flip-card-front .project-info {
-  padding:15px;
+.project-info {
+  padding: 15px;
 }
 .flip-card-back {
   transform: rotateY(180deg);
   background: #0f172a;
   justify-content: center;
   align-items: center;
-  padding:20px;
   text-align: center;
+  padding: 20px;
 }
 .flip-card-back p {
-  margin-bottom:15px;
+  margin-bottom: 15px;
 }
 .flip-card-back a {
-  color:#0dcaf0;
-  font-weight:600;
-  text-decoration:none;
+  color: #0dcaf0;
+  font-weight: 600;
+  text-decoration: none;
 }
 .tag {
-  display:inline-block;
-  background:#334155;
-  color:#94a3b8;
-  padding:4px 10px;
-  border-radius:20px;
-  font-size:.8rem;
-  margin-right:5px;
+  display: inline-block;
+  background: #334155;
+  color: #94a3b8;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: .8rem;
+  margin-right: 5px;
 }
 
-/* ───── Research Filters ───── */
+/*──────────────────────────────────────────────────────────────────────────────
+   Research Section
+──────────────────────────────────────────────────────────────────────────────*/
 .research-filters .filter-btn {
   margin: 0 5px 10px;
   padding: 8px 20px;
   border: 2px solid #0dcaf0;
+  border-radius: 50px;
   background: transparent;
   color: #0dcaf0;
-  border-radius: 50px;
   transition: 0.3s;
   cursor: pointer;
 }
@@ -254,7 +267,6 @@ section {
   color: #000;
 }
 
-/* ───── Timeline Styles ───── */
 .timeline {
   position: relative;
   margin: 2rem 0;
@@ -263,21 +275,20 @@ section {
 .timeline::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 20px;
-  width: 4px;
-  height: 100%;
+  top: 0; left: 20px;
+  width: 4px; height: 100%;
   background: #0dcaf0;
 }
 .timeline-item {
   position: relative;
   margin-bottom: 2rem;
 }
-.timeline-item:last-child { margin-bottom: 0; }
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
 .timeline-dot {
   position: absolute;
-  left: 12px;
-  top: 4px;
+  left: 12px; top: 4px;
   width: 16px; height: 16px;
   background: #0dcaf0;
   border-radius: 50%;
@@ -286,20 +297,20 @@ section {
   padding-left: 2.5rem;
 }
 .timeline-content h5 {
-  margin-bottom: 0.5rem;
+  margin-bottom: .5rem;
   font-weight: 600;
 }
-
-/* ───── Collapse Overrides ───── */
 .collapse p {
-  font-size: 0.9rem;
+  font-size: .9rem;
   line-height: 1.5;
 }
 .collapse a.btn {
-  margin-top: 0.5rem;
+  margin-top: .5rem;
 }
 
-/* ───── Skill Bars ───── */
+/*──────────────────────────────────────────────────────────────────────────────
+   Skills Section
+──────────────────────────────────────────────────────────────────────────────*/
 .skill-progress {
   height: 8px;
   background: #334155;
@@ -311,13 +322,15 @@ section {
   transition: width 2s ease;
 }
 
-/* ───── Certifications Cards ───── */
+/*──────────────────────────────────────────────────────────────────────────────
+   Certifications Section
+──────────────────────────────────────────────────────────────────────────────*/
 .cert-card {
   background: #1e293b;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: .5rem;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform .3s, box-shadow .3s;
 }
 .cert-card:hover {
   transform: translateY(-5px);
@@ -333,36 +346,37 @@ section {
 }
 .cert-card .card-text {
   color: #94a3b8;
-  font-size: 0.9rem;
+  font-size: .9rem;
 }
-/* ───── Form Controls ───── */
+
+/*──────────────────────────────────────────────────────────────────────────────
+   Contact Section
+──────────────────────────────────────────────────────────────────────────────*/
 .form-control {
   background: #1e293b;
   border: 1px solid #334155;
   color: #fff;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition: border-color .3s, box-shadow .3s;
 }
 .form-control:focus {
-  background: #1e293b;
   border-color: #0dcaf0;
-  box-shadow: 0 0 0 0.2rem rgba(13,202,240,0.25);
+  box-shadow: 0 0 0 .2rem rgba(13,202,240,0.25);
 }
-
-/* ───── Contact Button ───── */
-.btn-outline-info {
+#contactForm .btn-outline-info {
+  width: 100%;
   border-radius: 50px;
   padding: 10px 25px;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all .3s ease;
 }
-.btn-outline-info:hover {
-  background-color: #0dcaf0;
+#contactForm .btn-outline-info:hover {
+  background: #0dcaf0;
   color: #000;
   box-shadow: 0 0 15px #0dcaf0;
   transform: scale(1.05);
 }
-
-/* ───── Alert ───── */
 #contactAlert {
-  font-size: 0.9rem;
+  margin-top: 1rem;
+  font-size: .9rem;
+  color: #0dcaf0;
 }

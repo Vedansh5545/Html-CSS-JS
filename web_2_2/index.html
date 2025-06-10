@@ -42,18 +42,37 @@
 
 
 
+
   <!-- Hero Section -->
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center text-center vh-100 position-relative overflow-hidden">
-    <!-- …hero background and avatar… -->
-    <img src="avatar_placeholder.png" alt="Vedansh as Human" class="rounded-circle avatar-img" width="160" height="160" data-aos="fade-down">
-    <h1 class="display-4 fw-bold" data-aos="fade-up" data-aos-delay="100">Vedansh Tembhre</h1>
-    <p class="lead typewriter" data-aos="fade-up" data-aos-delay="200">
+<section id="hero" class="position-relative vh-100 overflow-hidden">
+  <!-- give Three-js somewhere to render -->
+  <canvas id="hero-canvas"></canvas>
+
+
+
+  <!-- 2. Your existing hero content -->
+  <div class="hero-content d-flex flex-column justify-content-center align-items-center text-center position-relative h-100" style="z-index: 1;">
+    <img src="avatar_placeholder.png"
+         alt="Vedansh"
+         class="rounded-circle avatar-img shadow-lg mb-3"
+         width="160" height="160"
+         data-aos="fade-down"/>
+
+    <h1 class="display-4 fw-bold text-white" data-aos="fade-up" data-aos-delay="100">
+      Vedansh Tembhre
+    </h1>
+
+    <p class="lead text-light typewriter mt-2" data-aos="fade-up" data-aos-delay="200">
       Building intelligent systems and immersive web experiences.
     </p>
-    <a href="#projects" class="btn btn-outline-info mt-3" data-aos="fade-up" data-aos-delay="300">
+
+    <a href="#projects" class="btn btn-outline-info mt-4" data-aos="fade-up" data-aos-delay="300">
       Explore Projects
     </a>
-  </section>
+  </div>
+</section>
+
+
 
    <!-- Decorated About Me Section -->
   <section id="about" class="py-5 position-relative overflow-hidden">
@@ -434,15 +453,14 @@
   </section>
 
   <!-- Scripts -->
+  <!-- load JS libraries -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <!-- Three.js core (you already have this) -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
-  <!-- GLTFLoader (for .glb / .gltf) -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/js/loaders/GLTFLoader.js"></script>
-  <!-- Your custom script -->
-  <script src="script.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.6.1/tsparticles.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
 
   <script src="script.js"></script>
+
 </body>
 </html>
