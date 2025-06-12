@@ -13,6 +13,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet"/>
   <!-- AOS Animation -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+  <!-- Tailwind CSS (for utility classes) -->
+   <link src="https://cdn.tailwindcss.com" rel="stylesheet">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="styles.css"/>
 </head>
@@ -20,48 +22,66 @@
 
   <!-- Fixed full-page 3D background -->
   <canvas id="bg-canvas"></canvas>
+<!-- Navbar -->
+<header id="navbar" class="fixed inset-x-0 top-0 z-50 px-6 py-4 flex items-center justify-between bg-transparent">
+  <!-- Logo -->
+  <a href="#hero" class="neon-text font-orbitron text-2xl">Vedansh</a>
 
-  <!-- Navbar -->
-  <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#hero">Vedansh</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
-          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </div>
+  <!-- Desktop Menu -->
+  <nav class="hidden md:flex space-x-8">
+    <a href="#about"        class="nav-item font-orbitron">About</a>
+    <a href="#projects"     class="nav-item font-orbitron">Projects</a>
+    <a href="#research"     class="nav-item font-orbitron">Research</a>
+    <a href="#skills"       class="nav-item font-orbitron">Skills</a>
+    <a href="#certifications" class="nav-item font-orbitron">Certificates</a>
+    <a href="#contact"      class="nav-item font-orbitron">Contact</a>
   </nav>
 
+  <!-- Mobile Toggle -->
+  <button id="nav-toggle" class="md:hidden flex flex-col justify-between w-6 h-6 focus:outline-none">
+    <span></span><span></span><span></span>
+  </button>
+
+  <!-- Mobile Menu -->
+  <nav id="mobile-menu" class="absolute top-full inset-x-0 hidden flex-col items-center space-y-4 py-4">
+    <a href="#about"        class="nav-item-mobile font-orbitron">About</a>
+    <a href="#research"     class="nav-item-mobile font-orbitron">Research</a>
+    <a href="#projects"     class="nav-item-mobile font-orbitron">Projects</a>
+    <a href="#skills"       class="nav-item-mobile font-orbitron">Skills</a>
+    <a href="#certificates" class="nav-item-mobile font-orbitron">Certificates</a>
+    <a href="#contact"      class="nav-item-mobile font-orbitron">Contact</a>
+  </nav>
+</header>
+
+
+
   <!-- Hero Section -->
-  <section id="hero" class="position-relative vh-100 overflow-hidden">
-    <div class="hero-content d-flex flex-column justify-content-center align-items-center text-center position-relative h-100">
-      <img src="avatar_placeholder.png"
-           alt="Vedansh"
-           class="rounded-circle avatar-img shadow-lg mb-3"
-           width="160" height="160"
-           data-aos="fade-down"/>
-      <h1 class="display-4 fw-bold text-white" data-aos="fade-up" data-aos-delay="100">
-        Vedansh Tembhre
-      </h1>
-      <p class="lead text-light typewriter mt-2" data-aos="fade-up" data-aos-delay="200">
-        Building intelligent systems and immersive web experiences.
-      </p>
-      <a href="#projects" class="btn btn-outline-info mt-4" data-aos="fade-up" data-aos-delay="300">
-        Explore Projects
-      </a>
-    </div>
-  </section>
+<section id="hero" class="relative h-screen overflow-hidden">
+  <!-- (optional) Three.js canvas for orb/particles -->
+  <div id="hero-canvas" class="absolute inset-0"></div>
+
+  <!-- Overlay content -->
+  <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+    <!-- Avatar image -->
+    <img
+      src="avatar_placeholder.png"
+      alt="Vedansh as Human"
+      class="w-48 h-48 rounded-full neon-border mb-6 animate-float"
+    />
+
+    <!-- Typewriter title -->
+    <h1 id="hero-title" class="text-5xl md:text-7xl font-orbitron text-white mb-4"></h1>
+    <p id="hero-sub" class="text-lg md:text-2xl text-gray-300 mb-8">
+      Building interactive demos & immersive experiences.
+    </p>
+
+    <!-- CTA button -->
+    <button id="hero-cta" class="px-6 py-3 font-orbitron text-xl rounded neon-border glow-pulse">
+      Explore
+    </button>
+  </div>
+</section>
+
 
   <!-- About Me (solid bg hides 3D) -->
   <section id="about" class="py-5 position-relative overflow-hidden">
@@ -440,6 +460,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <script src="script.js"></script>
 </body>
 </html>

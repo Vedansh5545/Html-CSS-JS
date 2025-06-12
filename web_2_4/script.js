@@ -3,6 +3,86 @@ document.addEventListener('DOMContentLoaded', () => {
   // AOS init
   AOS.init({ duration: 800, once: true });
 
+  // --- scroll-spy to toggle 'active' on links ---
+const sections     = document.querySelectorAll('section[id]');
+const desktopLinks = document.querySelectorAll('.nav-item');
+const mobileLinks  = document.querySelectorAll('.nav-item-mobile');
+
+function updateActiveLink() {
+  const scrollPos = window.scrollY + window.innerHeight / 3;
+  sections.forEach(sec => {
+    const top    = sec.offsetTop;
+    const bottom = top + sec.offsetHeight;
+    const id     = sec.id;
+    const dLink  = document.querySelector(`.nav-item[href="#${id}"]`);
+    const mLink  = document.querySelector(`.nav-item-mobile[href="#${id}"]`);
+
+    if (scrollPos >= top && scrollPos < bottom) {
+      dLink?.classList.add('active');
+      mLink?.classList.add('active');
+    } else {
+      dLink?.classList.remove('active');
+      mLink?.classList.remove('active');
+    }
+  });
+}
+window.addEventListener('scroll', updateActiveLink);
+document.addEventListener('DOMContentLoaded', updateActiveLink);
+
+// --- mobile menu toggle ---
+const navToggle  = document.getElementById('nav-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+
+navToggle.addEventListener('click', () => {
+  navToggle.classList.toggle('open');
+  mobileMenu.classList.toggle('hidden');
+});
+
+// --- smooth scrolling & guard missing targets ---
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    // close mobile menu
+    navToggle.classList.remove('open');
+    mobileMenu.classList.add('hidden');
+    // scroll if target exists
+    const href   = this.getAttribute('href');
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      console.warn(`No section found for ${href}`);
+    }
+  });
+});
+
+// Typewriter effect
+const phrases = ["Hi, I'm Vedansh.", "AI Researcher", "Web Developer", "3D Animator"];
+let idx = 0, charIdx = 0;
+const titleEl = document.getElementById('hero-title');
+
+function type() {
+  const current = phrases[idx];
+  titleEl.textContent = current.slice(0, ++charIdx);
+  if (charIdx === current.length) {
+    setTimeout(() => {
+      charIdx = 0;
+      idx = (idx + 1) % phrases.length;
+      titleEl.textContent = '';
+      type();
+    }, 1500);
+  } else {
+    setTimeout(type, 100);
+  }
+}
+document.addEventListener('DOMContentLoaded', type);
+
+// Smooth scroll for CTA
+document.getElementById('hero-cta').addEventListener('click', () => {
+  document.querySelector('#about').scrollIntoView({ behavior: 'smooth' });
+});
+
+
   // Avatar tilt
   const avatar = document.querySelector('.avatar-img');
   if (avatar) {
