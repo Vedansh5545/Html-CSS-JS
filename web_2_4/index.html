@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vedansh Tembhre | AI Portfolio</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
+  <!-- Orbitron Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet"/>
+  <!-- AOS Animation -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80">
+
+  <!-- Fixed full-page 3D background -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Navbar -->
+  <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#hero">Vedansh</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="position-relative vh-100 overflow-hidden">
+    <div class="hero-content d-flex flex-column justify-content-center align-items-center text-center position-relative h-100">
+      <img src="avatar_placeholder.png"
+           alt="Vedansh"
+           class="rounded-circle avatar-img shadow-lg mb-3"
+           width="160" height="160"
+           data-aos="fade-down"/>
+      <h1 class="display-4 fw-bold text-white" data-aos="fade-up" data-aos-delay="100">
+        Vedansh Tembhre
+      </h1>
+      <p class="lead text-light typewriter mt-2" data-aos="fade-up" data-aos-delay="200">
+        Building intelligent systems and immersive web experiences.
+      </p>
+      <a href="#projects" class="btn btn-outline-info mt-4" data-aos="fade-up" data-aos-delay="300">
+        Explore Projects
+      </a>
+    </div>
+  </section>
+
+  <!-- About Me (solid bg hides 3D) -->
+  <section id="about" class="py-5 position-relative overflow-hidden">
+    <div class="decorative-circle"></div>
+    <div class="decorative-circle2"></div>
+    <div class="container position-relative" data-aos="fade-up">
+      <div class="row align-items-center">
+        <div class="col-md-5 mb-4 mb-md-0" data-aos="fade-right">
+          <img src="About_Me.png"
+               alt="Vedansh Tembhre"
+               class="img-fluid rounded-circle about-avatar shadow-lg">
+        </div>
+        <div class="col-md-7" data-aos="fade-left">
+          <h2 class="mb-4 about-title">About Me</h2>
+          <p class="about-text mb-4">
+            I’m a Computer Science junior at UNT with a passion for <strong>AI/ML</strong>, <strong>web development</strong>, and <strong>cybersecurity</strong>. By day, I build real-time ASL hand-recognition models in PyTorch (98% live accuracy) and design full-stack Angular/Firebase platforms used by 50+ ASL learners. By night, I prototype Chrome extensions, sketch robot concepts, and puzzle over AI ethics.
+          </p>
+          <ul class="list-unstyled about-list mb-4">
+            <li class="d-flex align-items-start mb-2">
+              <i class="bi bi-award-fill text-info me-3"></i>
+              Developed a 3D pose-estimation pipeline that ranked in the top 10% on the MotionAGFormer leaderboard.
+            </li>
+            <li class="d-flex align-items-start">
+              <i class="bi bi-rocket-fill text-info me-3"></i>
+              Launched an ASL learning web app that’s helped learners master 10+ letters with interactive demos.
+            </li>
+          </ul>
+          <p class="fs-6 text-muted">
+            Outside of code, I’m a die-hard Valorant player and an avid reader of sci-fi.
+          </p>
+        </div>
+    </div>
+  </section>
+
+  <!-- Other Sections (transparent so 3D shows through) -->
+  <section id="projects" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4" data-aos="fade-up">Projects Gallery</h2>
+
+      <!-- Filters -->
+      <div class="project-filters text-center mb-4" data-aos="fade-up" data-aos-delay="100">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web Dev</button>
+        <button class="filter-btn" data-filter="ml">Machine Learning</button>
+        <button class="filter-btn" data-filter="research">Research</button>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gx-4 gy-3 align-items-stretch">
+        <!-- Project 1 -->
+        <div class="col" data-aos="fade-up" data-aos-delay="200">
+          <div class="flip-card-container">
+            <div class="flip-card project-card" data-category="web research">
+              <div class="flip-card-face flip-card-front">
+                <img src="project1.jpg" alt="ASL Learning Platform">
+                <div class="project-info">
+                  <h5>ASL Learning Platform</h5>
+                  <span class="tag">Web Dev</span>
+                  <span class="tag">Research</span>
+                </div>
+              </div>
+              <div class="flip-card-face flip-card-back">
+                <p>Responsive Angular+Firebase platform featuring text-to-ASL translation and real-time pose recognition.</p>
+                <a href="https://github.com/Vedansh5545/ASLLearning" target="_blank">View on GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="col" data-aos="fade-up" data-aos-delay="300">
+          <div class="flip-card-container">
+            <div class="flip-card project-card" data-category="ml research">
+              <div class="flip-card-face flip-card-front">
+                <img src="project2.jpg" alt="ASL Hand Recognition">
+                <div class="project-info">
+                  <h5>ASL Hand Recognition</h5>
+                  <span class="tag">Machine Learning</span>
+                  <span class="tag">Research</span>
+                </div>
+              </div>
+              <div class="flip-card-face flip-card-back">
+                <p>PyTorch pipeline detecting ASL letters using CNN+EGCN for real-time translation.</p>
+                <a href="https://github.com/Vedansh5545/ASLHandRecognition" target="_blank">View on GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="col" data-aos="fade-up" data-aos-delay="400">
+          <div class="flip-card-container">
+            <div class="flip-card project-card" data-category="ml research">
+              <div class="flip-card-face flip-card-front">
+                <img src="project3.jpg" alt="3D Pose Estimation">
+                <div class="project-info">
+                  <h5>3D Pose Estimation</h5>
+                  <span class="tag">Machine Learning</span>
+                  <span class="tag">Research</span>
+                </div>
+              </div>
+              <div class="flip-card-face flip-card-back">
+                <p>Hybrid Sparse GCN+Transformer lifting 2D MediaPipe keypoints into accurate 3D skeletons.</p>
+                <a href="https://github.com/Vedansh5545/3DPoseEstimation" target="_blank">View on GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="col" data-aos="fade-up" data-aos-delay="500">
+          <div class="flip-card-container">
+            <div class="flip-card project-card" data-category="ml">
+              <div class="flip-card-face flip-card-front">
+                <img src="project4.jpg" alt="Stock Price Prediction">
+                <div class="project-info">
+                  <h5>Stock Price Prediction</h5>
+                  <span class="tag">Machine Learning</span>
+                </div>
+              </div>
+              <div class="flip-card-face flip-card-back">
+                <p>TensorFlow model forecasting NYSE stock prices using ensemble learning and feature engineering.</p>
+                <a href="https://github.com/Vedansh5545/StockPredictor" target="_blank">View on GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="research" class="py-5 bg-transparent text-white">
+        <div class="container">
+      <h2 class="text-center mb-4" data-aos="fade-up">Research</h2>
+
+      <!-- Research Filters -->
+      <div class="research-filters text-center mb-4" data-aos="fade-up" data-aos-delay="100">
+        <button class="filter-btn research-filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn research-filter-btn" data-filter="cv">CV</button>
+        <button class="filter-btn research-filter-btn" data-filter="nlp">NLP</button>
+        <button class="filter-btn research-filter-btn" data-filter="security">Security</button>
+      </div>
+
+      <!-- Timeline -->
+      <div class="timeline" data-aos="fade-up" data-aos-delay="200">
+        <!-- Item 1 -->
+        <div class="timeline-item research-card" data-category="cv">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h5>3D Pose Estimation Pipeline <small class="text-muted">2024</small></h5>
+            <p>Hybrid GCN+Transformer model lifting 2D MediaPipe keypoints into accurate 3D skeletons.</p>
+            <button class="btn btn-sm btn-outline-info" data-bs-toggle="collapse" data-bs-target="#r1">
+              Read More
+            </button>
+            <div class="collapse mt-2" id="r1">
+              <p>
+                <strong>Abstract:</strong> We propose a novel sparse graph convolutional network combined with a transformer module...
+              </p>
+              <a href="https://github.com/Vedansh5545/3DPoseEstimation" target="_blank" class="btn btn-sm btn-info">
+                View Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="timeline-item research-card" data-category="cv">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h5>ASL Gesture Recognition Study <small class="text-muted">2023</small></h5>
+            <p>Analyzed real-time ASL recognition accuracy using CNN + EGCN architectures.</p>
+            <button class="btn btn-sm btn-outline-info" data-bs-toggle="collapse" data-bs-target="#r2">
+              Read More
+            </button>
+            <div class="collapse mt-2" id="r2">
+              <p>
+                <strong>Abstract:</strong> This study benchmarks multiple convolutional and graph-based models on live webcam streams...
+              </p>
+              <a href="paper_ASL_recognition.pdf" target="_blank" class="btn btn-sm btn-info">
+                View PDF
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="timeline-item research-card" data-category="nlp">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h5>NLP Summarization Model <small class="text-muted">2022</small></h5>
+            <p>Built a transformer-based summarizer achieving ROUGE-L of 0.48 on news datasets.</p>
+            <button class="btn btn-sm btn-outline-info" data-bs-toggle="collapse" data-bs-target="#r3">
+              Read More
+            </button>
+            <div class="collapse mt-2" id="r3">
+              <p>
+                <strong>Abstract:</strong> Leveraged pretrained BART and domain-specific fine-tuning to create concise summaries...
+              </p>
+              <a href="https://github.com/Vedansh5545/NLP-Summarizer" target="_blank" class="btn btn-sm btn-info">
+                View Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="timeline-item research-card" data-category="security">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h5>Chatbot Vulnerability Analysis <small class="text-muted">2023</small></h5>
+            <p>Surveyed adversarial prompts and mitigation strategies in large language models.</p>
+            <button class="btn btn-sm btn-outline-info" data-bs-toggle="collapse" data-bs-target="#r4">
+              Read More
+            </button>
+            <div class="collapse mt-2" id="r4">
+              <p>
+                <strong>Abstract:</strong> Identified common prompt-injection attacks and evaluated defense mechanisms across GPT variants...
+              </p>
+              <a href="paper_chatbot_vuln.pdf" target="_blank" class="btn btn-sm btn-info">
+                View PDF
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="skills" class="py-5 bg-transparent text-white">
+<div class="container">
+      <h2 class="text-center mb-4" data-aos="fade-up">Skills</h2>
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+        <!-- Python -->
+        <div class="col" data-aos="fade-right">
+          <h5>Python</h5>
+          <div class="progress skill-progress">
+            <div class="progress-bar" role="progressbar" style="width:0" data-progress="90"></div>
+          </div>
+        </div>
+        <!-- JavaScript -->
+        <div class="col" data-aos="fade-left">
+          <h5>JavaScript</h5>
+          <div class="progress skill-progress">
+            <div class="progress-bar" role="progressbar" style="width:0" data-progress="85"></div>
+          </div>
+        </div>
+        <!-- HTML/CSS -->
+        <div class="col" data-aos="fade-right">
+          <h5>HTML &amp; CSS</h5>
+          <div class="progress skill-progress">
+            <div class="progress-bar" role="progressbar" style="width:0" data-progress="90"></div>
+          </div>
+        </div>
+        <!-- TensorFlow -->
+        <div class="col" data-aos="fade-left">
+          <h5>TensorFlow</h5>
+          <div class="progress skill-progress">
+            <div class="progress-bar" role="progressbar" style="width:0" data-progress="80"></div>
+          </div>
+        </div>
+        <!-- PyTorch -->
+        <div class="col" data-aos="fade-right">
+          <h5>PyTorch</h5>
+          <div class="progress skill-progress">
+            <div class="progress-bar" role="progressbar" style="width:0" data-progress="85"></div>
+          </div>
+        </div>
+        <!-- React -->
+        <div class="col" data-aos="fade-left">
+          <h5>React</h5>
+          <div class="progress skill-progress">
+            <div class="progress-bar" role="progressbar" style="width:0" data-progress="80"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications" class="py-5 bg-transparent">
+    <div class="container">
+      <h2 class="text-center mb-4" data-aos="fade-up">Certifications</h2>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- Cert 1 -->
+        <div class="col" data-aos="fade-up" data-aos-delay="100">
+          <div class="card cert-card h-100">
+            <img src="cert1.jpg" class="card-img-top" alt="Intel Project - Data Analysis for Sustainability">
+            <div class="card-body">
+              <h5 class="card-title">Intel Project – Data Analysis for Sustainability</h5>
+              <p class="card-text">Intel</p>
+              <a href="cert1.pdf" target="_blank" class="btn btn-sm btn-outline-info">View Certificate</a>
+            </div>
+          </div>
+        </div>
+        <!-- Cert 2 -->
+        <div class="col" data-aos="fade-up" data-aos-delay="200">
+          <div class="card cert-card h-100">
+            <img src="cert2.jpg" class="card-img-top" alt="Introduction to Cybersecurity Virtual Experience Program">
+            <div class="card-body">
+              <h5 class="card-title">Intro to Cybersecurity Virtual Experience</h5>
+              <p class="card-text">Virtual Experience Program</p>
+              <a href="cert2.pdf" target="_blank" class="btn btn-sm btn-outline-info">View Certificate</a>
+            </div>
+          </div>
+        </div>
+        <!-- Cert 3 -->
+        <div class="col" data-aos="fade-up" data-aos-delay="300">
+          <div class="card cert-card h-100">
+            <img src="cert3.jpg" class="card-img-top" alt="CSS for Programmers">
+            <div class="card-body">
+              <h5 class="card-title">CSS for Programmers</h5>
+              <p class="card-text">Coursera</p>
+              <a href="cert3.pdf" target="_blank" class="btn btn-sm btn-outline-info">View Certificate</a>
+            </div>
+          </div>
+        </div>
+        <!-- Cert 4 -->
+        <div class="col" data-aos="fade-up" data-aos-delay="400">
+          <div class="card cert-card h-100">
+            <img src="cert4.jpg" class="card-img-top" alt="Cloud Platform Virtual Experience Program">
+            <div class="card-body">
+              <h5 class="card-title">Cloud Platform Virtual Experience</h5>
+              <p class="card-text">Virtual Experience Program</p>
+              <a href="cert4.pdf" target="_blank" class="btn btn-sm btn-outline-info">View Certificate</a>
+            </div>
+          </div>
+        </div>
+        <!-- Cert 5 -->
+        <div class="col" data-aos="fade-up" data-aos-delay="500">
+          <div class="card cert-card h-100">
+            <img src="cert5.jpg" class="card-img-top" alt="Youth Speak Forum">
+            <div class="card-body">
+              <h5 class="card-title">Youth Speak Forum Certificate</h5>
+              <p class="card-text">Youth Speak Forum</p>
+              <a href="cert5.pdf" target="_blank" class="btn btn-sm btn-outline-info">View Certificate</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-5 bg-transparent text-white">
+        <div class="container">
+      <h2 class="text-center mb-4" data-aos="fade-up">Contact</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <form id="contactForm">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+            </div>
+            <div class="mb-3">
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" class="form-control" id="subject" placeholder="Subject" required>
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea class="form-control" id="message" rows="4" placeholder="Your message..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-outline-info w-100">Send Message</button>
+          </form>
+          <div id="contactAlert" class="alert alert-success mt-3 d-none" role="alert">
+            Thanks for reaching out! I’ll get back to you soon.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
