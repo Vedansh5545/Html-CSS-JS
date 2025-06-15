@@ -54,164 +54,254 @@
 </header>
 
 
+<!-- Hero Section -->
+<section id="hero" class="relative h-screen w-full overflow-hidden">
+  <!-- network canvas -->
+  <canvas id="network-bg" class="absolute inset-0"></canvas>
+  <!-- dark overlay -->
+  <div class="absolute inset-0 bg-black/40 z-0"></div>
 
-  <!-- Hero Section -->
-<section id="hero" class="relative h-screen overflow-hidden">
-  <!-- (optional) Three.js canvas for orb/particles -->
-  <div id="hero-canvas" class="absolute inset-0"></div>
+  <!-- content -->
+  <div class="relative z-10 container mx-auto flex flex-col md:flex-row items-center justify-between h-full px-6 lg:px-0">
+  <!-- ← Left Panel with Particle Background -->
+  <div id="hero-left" class="relative w-full md:w-2/5 overflow-hidden">
+    <!-- a) Particle canvas -->
+    <canvas id="left-particles" class="absolute inset-0 w-full h-full"></canvas>
 
-  <!-- Overlay content -->
-  <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-    <!-- Avatar image -->
-    <img
-      src="avatar_placeholder.png"
-      alt="Vedansh as Human"
-      class="w-48 h-48 rounded-full neon-border mb-6 animate-float"
-    />
+    <!-- b) Content -->
+    <div class="relative z-10 px-6 py-8 flex flex-col items-center space-y-6">
+      <!-- Avatar -->
+      <img 
+        src="avatar_placeholder.png" 
+        alt="Vedansh Avatar" 
+        class="avatar rounded-full border-4 border-accent w-32 h-32"
+      />
 
-    <!-- Typewriter title -->
-    <h1 id="hero-title" class="text-5xl md:text-7xl font-orbitron text-white mb-4"></h1>
-    <p id="hero-sub" class="text-lg md:text-2xl text-gray-300 mb-8">
-      Building interactive demos & immersive experiences.
-    </p>
+      <!-- Name -->
+      <h1 class="hero-main font-orbitron text-4xl md:text-5xl text-white">
+        Vedansh Tembhre
+      </h1>
 
-    <!-- CTA button -->
-    <button id="hero-cta" class="px-6 py-3 font-orbitron text-xl rounded neon-border glow-pulse">
-      Explore
-    </button>
+      <!-- Subtitle -->
+      <p class="hero-tagline text-lg text-gray-300 text-center">
+        Building AI-powered, immersive web experiences.
+      </p>
+
+      <!-- Call-to-Actions -->
+      <div class="hero-ctas flex gap-4">
+        <button id="hero-cta" class="btn-neon-lg font-orbitron">
+          Explore Projects
+        </button>
+        <a href="resume.pdf" target="_blank" class="btn-ghost font-orbitron">
+          View Résumé
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- Right panel (keep your existing code-editor here) -->
+    <div id="hero-right" class="w-full md:w-3/5">
+      <div class="border border-white/20 rounded-lg overflow-hidden shadow-lg">
+        <div id="code-editor" class="font-mono p-4 h-72 overflow-auto whitespace-pre-wrap">
+          <pre id="code-content"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- scroll cue -->
+
+
+
+
+  <!-- social -->
+  <div id="social-bar" class="absolute bottom-4 right-4 flex space-x-4 opacity-0">
+    <a href="https://linkedin.com/in/vedansh-tembhre" class="text-2xl">💼</a>
+    <a href="https://github.com/Vedansh5545"        class="text-2xl">🐙</a>
+    <a href="mailto:VedanshTembhre@my.unt.edu"      class="text-2xl">✉️</a>
   </div>
 </section>
 
 
   <!-- About Me (solid bg hides 3D) -->
-  <section id="about" class="py-5 position-relative overflow-hidden">
-    <div class="decorative-circle"></div>
-    <div class="decorative-circle2"></div>
-    <div class="container position-relative" data-aos="fade-up">
-      <div class="row align-items-center">
-        <div class="col-md-5 mb-4 mb-md-0" data-aos="fade-right">
-          <img src="About_Me.png"
-               alt="Vedansh Tembhre"
-               class="img-fluid rounded-circle about-avatar shadow-lg">
-        </div>
-        <div class="col-md-7" data-aos="fade-left">
-          <h2 class="mb-4 about-title">About Me</h2>
-          <p class="about-text mb-4">
-            I’m a Computer Science junior at UNT with a passion for <strong>AI/ML</strong>, <strong>web development</strong>, and <strong>cybersecurity</strong>. By day, I build real-time ASL hand-recognition models in PyTorch (98% live accuracy) and design full-stack Angular/Firebase platforms used by 50+ ASL learners. By night, I prototype Chrome extensions, sketch robot concepts, and puzzle over AI ethics.
-          </p>
-          <ul class="list-unstyled about-list mb-4">
-            <li class="d-flex align-items-start mb-2">
-              <i class="bi bi-award-fill text-info me-3"></i>
-              Developed a 3D pose-estimation pipeline that ranked in the top 10% on the MotionAGFormer leaderboard.
-            </li>
-            <li class="d-flex align-items-start">
-              <i class="bi bi-rocket-fill text-info me-3"></i>
-              Launched an ASL learning web app that’s helped learners master 10+ letters with interactive demos.
-            </li>
-          </ul>
-          <p class="fs-6 text-muted">
-            Outside of code, I’m a die-hard Valorant player and an avid reader of sci-fi.
-          </p>
-        </div>
+<section id="about" class="relative bg-dark overflow-hidden">
+  <!-- Decorative blobs -->
+  <div class="decorative-circle"></div>
+  <div class="decorative-circle2"></div>
+
+  <div class="pulse-circle pulse-sm"></div>
+  <div class="pulse-circle pulse-md"></div>
+  <div class="pulse-circle pulse-lg"></div>
+
+  <div class="relative z-10 container mx-auto px-6 py-20" data-aos="fade-up">
+    <!-- Avatar + Heading -->
+    <div class="flex flex-col md:flex-row items-center gap-6 mb-12">
+      <img
+        src="About_Me.png"
+        alt="Vedansh Tembhre"
+        class="about-avatar w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-accent shadow-lg"
+        data-aos="fade-right"
+      />
+      <div class="text-center md:text-left" data-aos="fade-left">
+        <h2 class="about-main font-orbitron text-4xl text-white mb-2">About Me</h2>
+        <p class="about-tagline text-lg text-gray-300">
+          Computer Science Senior at UNT passionate about AI/ML, Web Development & Cybersecurity
+        </p>
+      </div>
     </div>
-  </section>
+
+    <!-- Info-cards grid -->
+    <div class="info-cards grid gap-8">
+      <!-- 1: Personal & Academic -->
+      <div class="info-card" data-aos="fade-up" data-aos-delay="100">
+        <h3>Personal &amp; Academic</h3>
+        <ul>
+          <li>Name: Vedansh Tembhre</li>
+          <li>Location: Denton, TX (UNT)</li>
+          <li>Junior, B.S. Computer Science (GPA 3.72/4.0)</li>
+          <li>Visa: F-1</li>
+        </ul>
+      </div>
+
+      <!-- 2: Technical Skills & Tools -->
+      <div class="info-card" data-aos="fade-up" data-aos-delay="200">
+        <h3>Skills &amp; Tools</h3>
+        <ul>
+          <li>C++, Python, JavaScript/HTML/CSS, SQL</li>
+          <li>PyTorch, TensorFlow, Scikit-learn, NumPy, pandas, Plotly</li>
+          <li>JFlex & CUP, ROS Kinetic, Ubuntu, VS Code, Firebase, Angular</li>
+          <li>Git/GitHub, Tableau, Excel/Sheets</li>
+        </ul>
+      </div>
+
+      <!-- 3: Key Projects & Research -->
+      <div class="info-card" data-aos="fade-up" data-aos-delay="300">
+        <h3>Projects &amp; Research</h3>
+        <ul>
+          <li>Image classifiers (CIFAR-10, Fashion MNIST)</li>
+          <li>2D/3D pose estimation (CNN+GCN, MotionAGFormer)</li>
+          <li>COVID-19 forecasting with STSGT</li>
+          <li>Graph Neural Networks for pose estimation</li>
+        </ul>
+      </div>
+
+      <!-- 4: Experience & Achievements -->
+      <div class="info-card" data-aos="fade-up" data-aos-delay="400">
+        <h3>Experience &amp; Awards</h3>
+        <ul>
+          <li>Lead Tutor @ UNT (since Aug 2023)</li>
+          <li>Education Intern @ Genius Armoury</li>
+          <li>Apple Pathways Scholar; Intel Certificate</li>
+          <li>UNT Honors Research Fellow (2024–25)</li>
+          <li>Publications & CVPR/ICLR submissions</li>
+        </ul>
+      </div>
+
+      <!-- 5: Style & Workflow -->
+      <div class="info-card" data-aos="fade-up" data-aos-delay="500">
+        <h3>Workflow &amp; Preferences</h3>
+        <ul>
+          <li>Communication: structured & professional</li>
+          <li>Guidance: step-by-step & concise</li>
+          <li>Formatting: Markdown for code; PDF for docs</li>
+          <li>Scheduling: timely reminders & clear deadlines</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 
   <!-- Other Sections (transparent so 3D shows through) -->
-  <section id="projects" class="py-5">
-    <div class="container">
-      <h2 class="text-center mb-4" data-aos="fade-up">Projects Gallery</h2>
+<section id="projects" class="relative overflow-hidden py-20">
+  <div class="container mx-auto px-6 space-y-12">
+    <h2 class="text-4xl font-orbitron text-white mb-8">Projects</h2>
 
-      <!-- Filters -->
-      <div class="project-filters text-center mb-4" data-aos="fade-up" data-aos-delay="100">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="web">Web Dev</button>
-        <button class="filter-btn" data-filter="ml">Machine Learning</button>
-        <button class="filter-btn" data-filter="research">Research</button>
-      </div>
-
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gx-4 gy-3 align-items-stretch">
-        <!-- Project 1 -->
-        <div class="col" data-aos="fade-up" data-aos-delay="200">
-          <div class="flip-card-container">
-            <div class="flip-card project-card" data-category="web research">
-              <div class="flip-card-face flip-card-front">
-                <img src="project1.jpg" alt="ASL Learning Platform">
-                <div class="project-info">
-                  <h5>ASL Learning Platform</h5>
-                  <span class="tag">Web Dev</span>
-                  <span class="tag">Research</span>
-                </div>
-              </div>
-              <div class="flip-card-face flip-card-back">
-                <p>Responsive Angular+Firebase platform featuring text-to-ASL translation and real-time pose recognition.</p>
-                <a href="https://github.com/Vedansh5545/ASLLearning" target="_blank">View on GitHub</a>
-              </div>
-            </div>
-          </div>
+    <!-- 1: ASL Learning Platform -->
+    <div class="project-slab flex flex-col md:flex-row items-center gap-6">
+      <img
+        src="image/proj1_2.png"
+        alt="ASL Learning Platform"
+        class="w-full md:w-1/2 rounded-lg object-cover"
+      />
+      <div class="w-full md:w-1/2">
+        <h3 class="text-3xl font-orbitron text-white">
+          ASL Learning Platform
+        </h3>
+        <p class="mt-2 text-gray-200">
+          Full-stack Angular + Firebase app with real-time PyTorch model inference for American Sign Language hand-gesture recognition and text-to-ASL translation.
+        </p>
+        <div class="mt-4 flex gap-4">
+          <a href="https://demo.asl"        class="btn-neon-sm">Live Demo</a>
+          <a href="https://github.com/ASLPlatform" class="btn-neon-sm">View Code</a>
         </div>
-
-        <!-- Project 2 -->
-        <div class="col" data-aos="fade-up" data-aos-delay="300">
-          <div class="flip-card-container">
-            <div class="flip-card project-card" data-category="ml research">
-              <div class="flip-card-face flip-card-front">
-                <img src="project2.jpg" alt="ASL Hand Recognition">
-                <div class="project-info">
-                  <h5>ASL Hand Recognition</h5>
-                  <span class="tag">Machine Learning</span>
-                  <span class="tag">Research</span>
-                </div>
-              </div>
-              <div class="flip-card-face flip-card-back">
-                <p>PyTorch pipeline detecting ASL letters using CNN+EGCN for real-time translation.</p>
-                <a href="https://github.com/Vedansh5545/ASLHandRecognition" target="_blank">View on GitHub</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="col" data-aos="fade-up" data-aos-delay="400">
-          <div class="flip-card-container">
-            <div class="flip-card project-card" data-category="ml research">
-              <div class="flip-card-face flip-card-front">
-                <img src="project3.jpg" alt="3D Pose Estimation">
-                <div class="project-info">
-                  <h5>3D Pose Estimation</h5>
-                  <span class="tag">Machine Learning</span>
-                  <span class="tag">Research</span>
-                </div>
-              </div>
-              <div class="flip-card-face flip-card-back">
-                <p>Hybrid Sparse GCN+Transformer lifting 2D MediaPipe keypoints into accurate 3D skeletons.</p>
-                <a href="https://github.com/Vedansh5545/3DPoseEstimation" target="_blank">View on GitHub</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 4 -->
-        <div class="col" data-aos="fade-up" data-aos-delay="500">
-          <div class="flip-card-container">
-            <div class="flip-card project-card" data-category="ml">
-              <div class="flip-card-face flip-card-front">
-                <img src="project4.jpg" alt="Stock Price Prediction">
-                <div class="project-info">
-                  <h5>Stock Price Prediction</h5>
-                  <span class="tag">Machine Learning</span>
-                </div>
-              </div>
-              <div class="flip-card-face flip-card-back">
-                <p>TensorFlow model forecasting NYSE stock prices using ensemble learning and feature engineering.</p>
-                <a href="https://github.com/Vedansh5545/StockPredictor" target="_blank">View on GitHub</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
-  </section>
+
+    <!-- 2: “Eden” Chrome Extension (reverse layout) -->
+    <div class="project-slab flex flex-col md:flex-row-reverse items-center gap-6">
+      <img
+        src="image/proj2_3.png"
+        alt="Eden Chrome Extension"
+        class="w-full md:w-1/2 rounded-lg object-cover"
+      />
+      <div class="w-full md:w-1/2">
+        <h3 class="text-3xl font-orbitron text-white">
+          “Eden” Chrome Extension
+        </h3>
+        <p class="mt-2 text-gray-200">
+          HTML/CSS/JS plugin to save and organize tabs as circular “to-dos,” including AOS animations, scroll-spy nav, and a bounce arrow indicator.
+        </p>
+        <div class="mt-4 flex gap-4">
+          <a href="https://chrome.google.com/webstore/detail/eden" class="btn-neon-sm">Demo</a>
+          <a href="https://github.com/EdenExtension"           class="btn-neon-sm">View Code</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3: TinyC++ Compiler -->
+    <div class="project-slab flex flex-col md:flex-row items-center gap-6">
+      <img
+        src="image/proj3_2.png"
+        alt="TinyC++ Compiler"
+        class="w-full md:w-1/2 rounded-lg object-cover"
+      />
+      <div class="w-full md:w-1/2">
+        <h3 class="text-3xl font-orbitron text-white">
+          TinyC++ Compiler
+        </h3>
+        <p class="mt-2 text-gray-200">
+          Complete JFlex &amp; CUP grammar to parse TinyC++ code, resolve shift/reduce conflicts, and emit three-address intermediate C code.
+        </p>
+        <div class="mt-4 flex gap-4">
+          <a href="https://github.com/TinyCCompiler" class="btn-neon-sm">View Code</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4: x86 Assembly Utilities (reverse layout) -->
+    <div class="project-slab flex flex-col md:flex-row-reverse items-center gap-6">
+      <img
+        src="image/proj4.png"
+        alt="x86 Assembly Utilities"
+        class="w-full md:w-1/2 rounded-lg object-cover"
+      />
+      <div class="w-full md:w-1/2">
+        <h3 class="text-3xl font-orbitron text-white">
+          x86 Assembly Utilities
+        </h3>
+        <p class="mt-2 text-gray-200">
+          Two FASM programs: integer-to-English converter and an 8-bit integer printer in binary &amp; hex using bitwise operations.
+        </p>
+        <div class="mt-4 flex gap-4">
+          <a href="https://github.com/AssemblyUtils" class="btn-neon-sm">View Code</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
   <section id="research" class="py-5 bg-transparent text-white">
         <div class="container">
