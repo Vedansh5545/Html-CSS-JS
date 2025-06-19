@@ -213,25 +213,18 @@
 </section>
 
 <!-- Projects Section Start -->
-<section id="projects" class="py-16">
+<section id="projects" class="py-16 relative">
   <canvas id="projects-network-bg"></canvas>
   <div class="container mx-auto px-4 text-slate-100">
     <h2 class="text-4xl font-bold mb-6 text-center">Projects</h2>
     <canvas id="projects-blob-bg"></canvas>
+
     <!-- Filters -->
     <div class="project-filters flex justify-center gap-4 mb-8">
-      <button class="filter-btn px-4 py-2 rounded bg-blue-600 text-white active" data-filter="all">
-        All
-      </button>
-      <button class="filter-btn px-4 py-2 rounded bg-gray-700 hover:bg-gray-600" data-filter="web">
-        Web Dev
-      </button>
-      <button class="filter-btn px-4 py-2 rounded bg-gray-700 hover:bg-gray-600" data-filter="ai">
-        AI/ML
-      </button>
-      <button class="filter-btn px-4 py-2 rounded bg-gray-700 hover:bg-gray-600" data-filter="sys">
-        Systems
-      </button>
+      <button class="filter-btn px-4 py-2 rounded bg-blue-600 text-white active" data-filter="all">All</button>
+      <button class="filter-btn px-4 py-2 rounded bg-gray-700 hover:bg-gray-600" data-filter="web">Web Dev</button>
+      <button class="filter-btn px-4 py-2 rounded bg-gray-700 hover:bg-gray-600" data-filter="ai">AI/ML</button>
+      <button class="filter-btn px-4 py-2 rounded bg-gray-700 hover:bg-gray-600" data-filter="sys">Systems</button>
     </div>
 
     <!-- Grid -->
@@ -240,9 +233,7 @@
       <div class="project-slab" data-category="web ai">
         <img src="image/proj1_2.png" alt="ASL hand" class="project-icon mx-auto mb-4">
         <h3 class="text-2xl font-semibold mb-2">ASL Learning Platform</h3>
-        <p class="mb-4">
-          Full-stack Angular + Firebase app with real-time PyTorch inference for ASL hand-gesture recognition.
-        </p>
+        <p class="mb-4">Angular + Firebase app with real-time PyTorch inference for ASL hand recognition.</p>
         <div class="tech-chips mb-2">
           <span class="chip">Angular</span>
           <span class="chip">Firebase</span>
@@ -255,9 +246,7 @@
       <div class="project-slab" data-category="web">
         <img src="image/proj2_3.png" alt="Browser to-dos" class="project-icon mx-auto mb-4">
         <h3 class="text-2xl font-semibold mb-2">“Eden” Chrome Extension</h3>
-        <p class="mb-4">
-          HTML/CSS/JS plugin to save and organize tabs as circular to-dos, with AOS animations & scroll-spy nav.
-        </p>
+        <p class="mb-4">Plugin to organize tabs as circular to-dos, with animations & scroll-spy nav.</p>
         <div class="tech-chips mb-2">
           <span class="chip">HTML</span>
           <span class="chip">CSS</span>
@@ -270,9 +259,7 @@
       <div class="project-slab" data-category="sys">
         <img src="image/proj3_2.png" alt="JFlex→CUP flow" class="project-icon mx-auto mb-4">
         <h3 class="text-2xl font-semibold mb-2">TinyC++ Compiler</h3>
-        <p class="mb-4">
-          CUP grammar compatible with an unmodifiable JFlex lexer to parse TinyC++ & emit three-address code.
-        </p>
+        <p class="mb-4">CUP grammar for unmodifiable JFlex lexer to parse TinyC++ & emit intermediate code.</p>
         <div class="tech-chips mb-2">
           <span class="chip">JFlex</span>
           <span class="chip">CUP</span>
@@ -284,9 +271,7 @@
       <div class="project-slab" data-category="sys">
         <img src="image/proj4.png" alt="FASM outputs" class="project-icon mx-auto mb-4">
         <h3 class="text-2xl font-semibold mb-2">x86 Assembly Utilities</h3>
-        <p class="mb-4">
-          Two FASM programs: integer-to-English converter & 8-bit integer printer in binary / hex.
-        </p>
+        <p class="mb-4">FASM programs: integer-to-English & 8-bit integer in binary/hex.</p>
         <div class="tech-chips mb-2">
           <span class="chip">FASM</span>
           <span class="chip">Assembly</span>
@@ -295,7 +280,20 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal for Details -->
+  <div id="project-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <span id="modal-close" class="modal-close">&times;</span>
+      <img id="modal-image" class="modal-image" src="" alt="">
+      <h3 id="modal-title" class="modal-title"></h3>
+      <p id="modal-desc" class="modal-desc"></p>
+      <div id="modal-tech" class="modal-tech-chips"></div>
+      <a id="modal-link" href="#" class="modal-link" target="_blank">View Project ↗</a>
+    </div>
+  </div>
 </section>
+
 <!-- Projects Section End -->
 
 

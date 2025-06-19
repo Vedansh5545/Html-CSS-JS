@@ -355,6 +355,31 @@ document.querySelectorAll('section').forEach(section => {
   }
   draw();
 })();
+// 12.5 . Project View Details Modal
+document.querySelectorAll('.project-slab a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const card = link.closest('.project-slab');
+    const modal = document.getElementById('project-modal');
+    const title = card.querySelector('h3')?.textContent || '';
+    const desc  = card.querySelector('p')?.textContent || '';
+    const img   = card.querySelector('img')?.src || '';
+    const chips = card.querySelectorAll('.chip');
+    const techHTML = Array.from(chips).map(c => `<span class="chip">${c.textContent}</span>`).join('');
+
+    document.getElementById('modal-title').textContent = title;
+    document.getElementById('modal-desc').textContent = desc;
+    document.getElementById('modal-image').src = img;
+    document.getElementById('modal-tech').innerHTML = techHTML;
+    document.getElementById('modal-link').href = '#'; // replace with real link if available
+
+    modal.classList.remove('hidden');
+  });
+});
+
+document.getElementById('modal-close')?.addEventListener('click', () => {
+  document.getElementById('project-modal').classList.add('hidden');
+});
 
 
   // ─── 13. Slider nav buttons ───────────────────────────────────────
