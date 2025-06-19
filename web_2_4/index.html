@@ -212,96 +212,96 @@
   </div>
 </section>
 
-
-  <!-- Other Sections (transparent so 3D shows through) -->
-<section id="projects" class="relative overflow-hidden py-20">
-  <div class="container mx-auto px-6 space-y-12">
-    <h2 class="text-4xl font-orbitron text-white mb-8">Projects</h2>
-
-    <!-- 1: ASL Learning Platform -->
-    <div class="project-slab flex flex-col md:flex-row items-center gap-6">
-      <img
-        src="image/proj1_2.png"
-        alt="ASL Learning Platform"
-        class="w-full md:w-1/2 rounded-lg object-cover"
-      />
-      <div class="w-full md:w-1/2">
-        <h3 class="text-3xl font-orbitron text-white">
-          ASL Learning Platform
-        </h3>
-        <p class="mt-2 text-gray-200">
-          Full-stack Angular + Firebase app with real-time PyTorch model inference for American Sign Language hand-gesture recognition and text-to-ASL translation.
-        </p>
-        <div class="mt-4 flex gap-4">
-          <a href="https://demo.asl"        class="btn-neon-sm">Live Demo</a>
-          <a href="https://github.com/ASLPlatform" class="btn-neon-sm">View Code</a>
-        </div>
-      </div>
+<!-- Projects Section Start -->
+<section id="projects" class="py-16">
+  <canvas id="projects-network-bg"></canvas>
+  <div class="container mx-auto px-4 text-slate-100">
+    <h2 class="text-4xl font-bold mb-6 text-center">Projects</h2>
+    <canvas id="projects-blob-bg"></canvas>
+    <!-- Filters -->
+    <div class="project-filters flex justify-center gap-4 mb-8">
+      <button class="filter-btn px-4 py-2 rounded bg-blue-600 text-white active" data-filter="all">
+        All
+      </button>
+      <button class="filter-btn px-4 py-2 rounded bg-gray-700 hover:bg-gray-600" data-filter="web">
+        Web Dev
+      </button>
+      <button class="filter-btn px-4 py-2 rounded bg-gray-700 hover:bg-gray-600" data-filter="ai">
+        AI/ML
+      </button>
+      <button class="filter-btn px-4 py-2 rounded bg-gray-700 hover:bg-gray-600" data-filter="sys">
+        Systems
+      </button>
     </div>
 
-    <!-- 2: “Eden” Chrome Extension (reverse layout) -->
-    <div class="project-slab flex flex-col md:flex-row-reverse items-center gap-6">
-      <img
-        src="image/proj2_3.png"
-        alt="Eden Chrome Extension"
-        class="w-full md:w-1/2 rounded-lg object-cover"
-      />
-      <div class="w-full md:w-1/2">
-        <h3 class="text-3xl font-orbitron text-white">
-          “Eden” Chrome Extension
-        </h3>
-        <p class="mt-2 text-gray-200">
-          HTML/CSS/JS plugin to save and organize tabs as circular “to-dos,” including AOS animations, scroll-spy nav, and a bounce arrow indicator.
+    <!-- Grid -->
+    <div class="projects-grid grid gap-8">
+      <!-- ASL Learning Platform -->
+      <div class="project-slab" data-category="web ai">
+        <img src="image/proj1_2.png" alt="ASL hand" class="project-icon mx-auto mb-4">
+        <h3 class="text-2xl font-semibold mb-2">ASL Learning Platform</h3>
+        <p class="mb-4">
+          Full-stack Angular + Firebase app with real-time PyTorch inference for ASL hand-gesture recognition.
         </p>
-        <div class="mt-4 flex gap-4">
-          <a href="https://chrome.google.com/webstore/detail/eden" class="btn-neon-sm">Demo</a>
-          <a href="https://github.com/EdenExtension"           class="btn-neon-sm">View Code</a>
+        <div class="tech-chips mb-2">
+          <span class="chip">Angular</span>
+          <span class="chip">Firebase</span>
+          <span class="chip">PyTorch</span>
         </div>
+        <a href="#" class="mt-4 inline-block font-medium underline">View Details →</a>
+      </div>
+
+      <!-- Eden Chrome Extension -->
+      <div class="project-slab" data-category="web">
+        <img src="image/proj2_3.png" alt="Browser to-dos" class="project-icon mx-auto mb-4">
+        <h3 class="text-2xl font-semibold mb-2">“Eden” Chrome Extension</h3>
+        <p class="mb-4">
+          HTML/CSS/JS plugin to save and organize tabs as circular to-dos, with AOS animations & scroll-spy nav.
+        </p>
+        <div class="tech-chips mb-2">
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+          <span class="chip">JavaScript</span>
+        </div>
+        <a href="#" class="mt-4 inline-block font-medium underline">View Details →</a>
+      </div>
+
+      <!-- TinyC++ Compiler -->
+      <div class="project-slab" data-category="sys">
+        <img src="image/proj3_2.png" alt="JFlex→CUP flow" class="project-icon mx-auto mb-4">
+        <h3 class="text-2xl font-semibold mb-2">TinyC++ Compiler</h3>
+        <p class="mb-4">
+          CUP grammar compatible with an unmodifiable JFlex lexer to parse TinyC++ & emit three-address code.
+        </p>
+        <div class="tech-chips mb-2">
+          <span class="chip">JFlex</span>
+          <span class="chip">CUP</span>
+        </div>
+        <a href="#" class="mt-4 inline-block font-medium underline">View Details →</a>
+      </div>
+
+      <!-- x86 Assembly Utilities -->
+      <div class="project-slab" data-category="sys">
+        <img src="image/proj4.png" alt="FASM outputs" class="project-icon mx-auto mb-4">
+        <h3 class="text-2xl font-semibold mb-2">x86 Assembly Utilities</h3>
+        <p class="mb-4">
+          Two FASM programs: integer-to-English converter & 8-bit integer printer in binary / hex.
+        </p>
+        <div class="tech-chips mb-2">
+          <span class="chip">FASM</span>
+          <span class="chip">Assembly</span>
+        </div>
+        <a href="#" class="mt-4 inline-block font-medium underline">View Details →</a>
       </div>
     </div>
-
-    <!-- 3: TinyC++ Compiler -->
-    <div class="project-slab flex flex-col md:flex-row items-center gap-6">
-      <img
-        src="image/proj3_2.png"
-        alt="TinyC++ Compiler"
-        class="w-full md:w-1/2 rounded-lg object-cover"
-      />
-      <div class="w-full md:w-1/2">
-        <h3 class="text-3xl font-orbitron text-white">
-          TinyC++ Compiler
-        </h3>
-        <p class="mt-2 text-gray-200">
-          Complete JFlex &amp; CUP grammar to parse TinyC++ code, resolve shift/reduce conflicts, and emit three-address intermediate C code.
-        </p>
-        <div class="mt-4 flex gap-4">
-          <a href="https://github.com/TinyCCompiler" class="btn-neon-sm">View Code</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- 4: x86 Assembly Utilities (reverse layout) -->
-    <div class="project-slab flex flex-col md:flex-row-reverse items-center gap-6">
-      <img
-        src="image/proj4.png"
-        alt="x86 Assembly Utilities"
-        class="w-full md:w-1/2 rounded-lg object-cover"
-      />
-      <div class="w-full md:w-1/2">
-        <h3 class="text-3xl font-orbitron text-white">
-          x86 Assembly Utilities
-        </h3>
-        <p class="mt-2 text-gray-200">
-          Two FASM programs: integer-to-English converter and an 8-bit integer printer in binary &amp; hex using bitwise operations.
-        </p>
-        <div class="mt-4 flex gap-4">
-          <a href="https://github.com/AssemblyUtils" class="btn-neon-sm">View Code</a>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
+<!-- Projects Section End -->
+
+
+
+
+  
 
   <section id="research" class="py-5 bg-transparent text-white">
         <div class="container">
