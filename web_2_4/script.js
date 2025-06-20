@@ -381,8 +381,117 @@ document.getElementById('modal-close')?.addEventListener('click', () => {
   document.getElementById('project-modal').classList.add('hidden');
 });
 
+  // ─── 12.8 Floating particles for Research section ────────────────────
 
-  // ─── 13. Slider nav buttons ───────────────────────────────────────
+// Floating particle canvas for Research
+(function initResearchParticles() {
+  const canvas = document.getElementById('research-bg');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes;
+
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+    nodes = Array.from({ length: 50 }, () => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.2,
+      vy: (Math.random() - 0.5) * 0.2
+    }));
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    for (let i = 0; i < nodes.length; i++) {
+      const n = nodes[i];
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0) n.x = W;
+      if (n.x > W) n.x = 0;
+      if (n.y < 0) n.y = H;
+      if (n.y > H) n.y = 0;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, 1.5, 0, 2 * Math.PI);
+      ctx.fillStyle = 'rgba(0,200,255,0.4)';
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+document.addEventListener('DOMContentLoaded', () => {
+  // ── Starfield ─────────────────────────────────────────────────
+  (function() {
+    const canvas = document.getElementById('research-stars');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W, H, stars = [];
+    function resize() {
+      W = canvas.width = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+      stars = Array.from({ length: 100 }, () => ({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1.2 + 0.3,
+        tw: Math.random() * Math.PI * 2
+      }));
+    }
+    window.addEventListener('resize', resize);
+    resize();
+    (function draw() {
+      ctx.clearRect(0, 0, W, H);
+      stars.forEach(s => {
+        s.tw += 0.02;
+        const alpha = 0.5 + 0.5 * Math.sin(s.tw);
+        ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+        ctx.fill();
+      });
+      requestAnimationFrame(draw);
+    })();
+  })();
+
+  // ── Drifting Particles ────────────────────────────────────────
+  (function() {
+    const canvas = document.getElementById('research-bg');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W, H, parts = [];
+    function resize() {
+      W = canvas.width = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+      parts = Array.from({ length: 60 }, () => ({
+        x: Math.random() * W, y: Math.random() * H,
+        vx: (Math.random()-0.5)*0.3, vy: (Math.random()-0.5)*0.3,
+        r: Math.random()*1.5 + 0.5
+      }));
+    }
+    window.addEventListener('resize', resize);
+    resize();
+    (function draw() {
+      ctx.clearRect(0,0,W,H);
+      ctx.fillStyle = 'rgba(14,202,233,0.4)';
+      parts.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x<0) p.x = W; if(p.x>W) p.x = 0;
+        if (p.y<0) p.y = H; if(p.y>H) p.y = 0;
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fill();
+      });
+      requestAnimationFrame(draw);
+    })();
+  })();
+});
+
+
+
+
+  // ─── 13.5 Slider nav buttons ───────────────────────────────────────
   const slider = document.getElementById('project-slider');
   const prevBtn= document.getElementById('slider-prev');
   const nextBtn= document.getElementById('slider-next');

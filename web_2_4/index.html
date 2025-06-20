@@ -55,7 +55,7 @@
 
 
 <!-- Hero Section -->
-<section id="hero" class="relative h-screen w-full overflow-hidden">
+<section id="hero" class="relative h-screen w-full overflow-hidden section">
   <!-- network canvas -->
   <canvas id="network-bg" class="absolute inset-0"></canvas>
   <!-- dark overlay -->
@@ -125,7 +125,7 @@
 
 
   <!-- About Me (solid bg hides 3D) -->
-<section id="about" class="relative bg-dark overflow-hidden">
+<section id="about" class="relative bg-dark overflow-hidden section">
   <!-- Decorative blobs -->
   <div class="decorative-circle"></div>
   <div class="decorative-circle2"></div>
@@ -213,7 +213,7 @@
 </section>
 
 <!-- Projects Section Start -->
-<section id="projects" class="py-16 relative">
+<section id="projects" class="py-16 relative ">
   <canvas id="projects-network-bg"></canvas>
   <div class="container mx-auto px-4 text-slate-100">
     <h2 class="text-4xl font-bold mb-6 text-center">Projects</h2>
@@ -221,10 +221,10 @@
 
     <!-- Filters -->
     <div class="project-filters flex justify-center gap-4 mb-8">
-      <button class="filter-btn px-4 py-2 rounded bg-blue-600 text-white active" data-filter="all">All</button>
-      <button class="filter-btn px-4 py-2 rounded bg-gray-700 hover:bg-gray-600" data-filter="web">Web Dev</button>
-      <button class="filter-btn px-4 py-2 rounded bg-gray-700 hover:bg-gray-600" data-filter="ai">AI/ML</button>
-      <button class="filter-btn px-4 py-2 rounded bg-gray-700 hover:bg-gray-600" data-filter="sys">Systems</button>
+      <button class="btn-research filter-btn px-4 py-2 rounded bg-blue-600 text-white active" data-filter="all">All</button>
+      <button class="btn-research filter-btn px-4 py-2 rounded bg-gray-700 hover:bg-gray-600" data-filter="web">Web Dev</button>
+      <button class="btn-research filter-btn px-4 py-2 rounded bg-gray-700 hover:bg-gray-600" data-filter="ai">AI/ML</button>
+      <button class="btn-research filter-btn px-4 py-2 rounded bg-gray-700 hover:bg-gray-600" data-filter="sys">Systems</button>
     </div>
 
     <!-- Grid -->
@@ -299,108 +299,69 @@
 
 
 
-  
+<!-- ── Research Section ── -->
+<section id="research" class="research-section py-16">
+  <!-- Starfield -->
+  <canvas id="research-stars"></canvas>
+  <!-- Glow overlay -->
+  <div id="research-glow"></div>
+  <!-- Tiny drifting particles -->
+  <canvas id="research-bg"></canvas>
 
-  <section id="research" class="py-5 bg-transparent text-white">
-        <div class="container">
-      <h2 class="text-center mb-4" data-aos="fade-up">Research</h2>
-
-      <!-- Research Filters -->
-      <div class="research-filters text-center mb-4" data-aos="fade-up" data-aos-delay="100">
-        <button class="filter-btn research-filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn research-filter-btn" data-filter="cv">CV</button>
-        <button class="filter-btn research-filter-btn" data-filter="nlp">NLP</button>
-        <button class="filter-btn research-filter-btn" data-filter="security">Security</button>
+  <div class="container mx-auto px-6">
+    <h2 class="section-title text-center mb-12" data-aos="fade-down">
+      Research
+    </h2>
+    <div class="research-cards">
+      <!-- Card 1 -->
+      <div class="research-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="flex items-center mb-4">
+          <h3 class="research-card-title">
+            Real-Time 3D Human Pose Estimation using Hybrid Sparse GCN + Transformer
+          </h3>
+          <span class="research-year ml-auto">2024</span>
+        </div>
+        <p class="research-card-desc mb-4">
+          <strong>Objective:</strong> Develop a fast, lightweight, anatomically accurate real-time pipeline that lifts 2D MediaPipe keypoints into 3D skeletons via a hybrid Sparse-GCN + Attention Routing Transformer.
+        </p>
+        <a href="https://github.com/Vedansh5545/3DPoseEstimation" target="_blank" class="btn-research">
+          View Code
+        </a>
       </div>
-
-      <!-- Timeline -->
-      <div class="timeline" data-aos="fade-up" data-aos-delay="200">
-        <!-- Item 1 -->
-        <div class="timeline-item research-card" data-category="cv">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h5>3D Pose Estimation Pipeline <small class="text-muted">2024</small></h5>
-            <p>Hybrid GCN+Transformer model lifting 2D MediaPipe keypoints into accurate 3D skeletons.</p>
-            <button class="btn btn-sm btn-outline-info" data-bs-toggle="collapse" data-bs-target="#r1">
-              Read More
-            </button>
-            <div class="collapse mt-2" id="r1">
-              <p>
-                <strong>Abstract:</strong> We propose a novel sparse graph convolutional network combined with a transformer module...
-              </p>
-              <a href="https://github.com/Vedansh5545/3DPoseEstimation" target="_blank" class="btn btn-sm btn-info">
-                View Code
-              </a>
-            </div>
-          </div>
+      <!-- Card 2 -->
+      <div class="research-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="flex items-center mb-4">
+          <h3 class="research-card-title">
+            Navigating AI Cybersecurity: Challenges &amp; Safeguards in Conversational Systems
+          </h3>
+          <span class="research-year ml-auto">2025</span>
         </div>
-
-        <!-- Item 2 -->
-        <div class="timeline-item research-card" data-category="cv">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h5>ASL Gesture Recognition Study <small class="text-muted">2023</small></h5>
-            <p>Analyzed real-time ASL recognition accuracy using CNN + EGCN architectures.</p>
-            <button class="btn btn-sm btn-outline-info" data-bs-toggle="collapse" data-bs-target="#r2">
-              Read More
-            </button>
-            <div class="collapse mt-2" id="r2">
-              <p>
-                <strong>Abstract:</strong> This study benchmarks multiple convolutional and graph-based models on live webcam streams...
-              </p>
-              <a href="paper_ASL_recognition.pdf" target="_blank" class="btn btn-sm btn-info">
-                View PDF
-              </a>
-            </div>
-          </div>
+        <p class="research-card-desc mb-4">
+          <strong>Focus:</strong> Deep dive into vulnerabilities of AI chatbots (ChatGPT, Gemini, Copilot) and defenses against prompt-injection, jailbreaking, phishing, data-leakage &amp; multi-turn exploits.
+        </p>
+        <a href="#" class="btn-research">Read More</a>
+      </div>
+      <!-- Card 3 -->
+      <div class="research-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="flex items-center mb-4">
+          <h3 class="research-card-title">
+            Technological Singularity – An Overview of What the Future Holds
+          </h3>
+          <span class="research-year ml-auto">2021</span>
         </div>
-
-        <!-- Item 3 -->
-        <div class="timeline-item research-card" data-category="nlp">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h5>NLP Summarization Model <small class="text-muted">2022</small></h5>
-            <p>Built a transformer-based summarizer achieving ROUGE-L of 0.48 on news datasets.</p>
-            <button class="btn btn-sm btn-outline-info" data-bs-toggle="collapse" data-bs-target="#r3">
-              Read More
-            </button>
-            <div class="collapse mt-2" id="r3">
-              <p>
-                <strong>Abstract:</strong> Leveraged pretrained BART and domain-specific fine-tuning to create concise summaries...
-              </p>
-              <a href="https://github.com/Vedansh5545/NLP-Summarizer" target="_blank" class="btn btn-sm btn-info">
-                View Code
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Item 4 -->
-        <div class="timeline-item research-card" data-category="security">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h5>Chatbot Vulnerability Analysis <small class="text-muted">2023</small></h5>
-            <p>Surveyed adversarial prompts and mitigation strategies in large language models.</p>
-            <button class="btn btn-sm btn-outline-info" data-bs-toggle="collapse" data-bs-target="#r4">
-              Read More
-            </button>
-            <div class="collapse mt-2" id="r4">
-              <p>
-                <strong>Abstract:</strong> Identified common prompt-injection attacks and evaluated defense mechanisms across GPT variants...
-              </p>
-              <a href="paper_chatbot_vuln.pdf" target="_blank" class="btn btn-sm btn-info">
-                View PDF
-              </a>
-            </div>
-          </div>
-        </div>
+        <p class="research-card-desc mb-4">
+          <strong>Published In:</strong> IJCERT, Vol 8 Issue 10 (Oct 2021) – survey on AI types, intelligence explosion, societal impacts &amp; pioneers.
+        </p>
+        <a href="https://ijcert.org/ems/ijcert_papers/V8I1001.pdf" target="_blank" class="btn-research">
+          View Paper
+        </a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 
-  <section id="skills" class="py-5 bg-transparent text-white">
-<div class="container">
+<div id="Skills" class="container">
       <h2 class="text-center mb-4" data-aos="fade-up">Skills</h2>
       <div class="row row-cols-1 row-cols-md-2 g-4">
         <!-- Python -->
@@ -449,7 +410,7 @@
     </div>
   </section>
 
-  <section id="certifications" class="py-5 bg-transparent">
+  <section id="certifications" class="py-5 bg-transparent section">
     <div class="container">
       <h2 class="text-center mb-4" data-aos="fade-up">Certifications</h2>
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -512,7 +473,7 @@
     </div>
   </section>
 
-  <section id="contact" class="py-5 bg-transparent text-white">
+  <section id="contact" class="py-5 bg-transparent text-white section">
         <div class="container">
       <h2 class="text-center mb-4" data-aos="fade-up">Contact</h2>
       <div class="row justify-content-center">
