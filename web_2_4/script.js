@@ -506,18 +506,272 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ─── 14. Skill-bar animations ─────────────────────────────────────
-  document.querySelectorAll('.progress-bar').forEach(bar=>{
-    const obs = new IntersectionObserver(entries=>{
-      entries.forEach(e=>{
-        if (e.isIntersecting) {
-          bar.style.width = bar.dataset.progress + '%';
-          obs.disconnect();
-        }
-      });
-    },{ threshold:0.5 });
-    obs.observe(bar);
+
+  // --------------- 14. Skills Section complete───────────────────────────────
+ // Add this at the end of the DOMContentLoaded event listener
+initSkillsSection();
+
+// Skills Section Initialization, Sorting, Filtering, and Pagination
+function initSkillsSection() {
+  const skillsSection = document.getElementById('skills');
+  if (!skillsSection) return;
+
+  const grid = skillsSection.querySelector('.skills-grid');
+  const orbs = Array.from(grid.children);
+  const prevBtn = skillsSection.querySelector('#skills-slider-prev');
+  const nextBtn = skillsSection.querySelector('#skills-slider-next');
+  const filters = Array.from(skillsSection.querySelectorAll('.skills-filter-btn'));
+  const debugInfo = skillsSection.querySelector('.debug-info');
+
+  let currentFilter = 'all';
+  let pageIndex = 0;
+
+  // 1️⃣ Sort orbs by star count (descending)
+  const sortedOrbs = orbs.slice().sort((a, b) => {
+    const starsA = (a.innerText.match(/⭐/g) || []).length;
+    const starsB = (b.innerText.match(/⭐/g) || []).length;
+    return starsB - starsA;
   });
+
+  // Apply sorted order to the DOM
+  sortedOrbs.forEach(orb => grid.appendChild(orb));
+
+  // 2️⃣ Get the number of skills to show per page
+  function getPageSize() {
+    const width = window.innerWidth;
+    if (width >= 1024) return 9;  // 3x3 desktop
+    if (width >= 768) return 6;   // 3x2 tablet
+    return 3;                     // 3x1 mobile
+  }
+
+  // 3️⃣ Filter and paginate
+  function updatePager() {
+    const pageSize = getPageSize();
+
+    const filteredOrbs = currentFilter === 'all'
+      ? sortedOrbs
+      : sortedOrbs.filter(orb =>
+          orb.dataset.category.split(' ').includes(currentFilter)
+        );
+
+    const pageCount = Math.max(1, Math.ceil(filteredOrbs.length / pageSize));
+    pageIndex = Math.max(0, Math.min(pageIndex, pageCount - 1));
+
+    // Hide all orbs first
+    sortedOrbs.forEach(orb => orb.classList.add('hidden'));
+
+    // Show the current page orbs
+    const start = pageIndex * pageSize;
+    const end = start + pageSize;
+    filteredOrbs.slice(start, end).forEach(orb => orb.classList.remove('hidden'));
+
+    // Button states
+    if (prevBtn) {
+      prevBtn.disabled = pageIndex === 0;
+      prevBtn.style.opacity = pageIndex === 0 ? 0.5 : 1;
+    }
+
+    if (nextBtn) {
+      nextBtn.disabled = pageIndex >= pageCount - 1;
+      nextBtn.style.opacity = pageIndex >= pageCount - 1 ? 0.5 : 1;
+    }
+
+    if (debugInfo) {
+      debugInfo.textContent = `Showing ${start + 1}-${Math.min(end, filteredOrbs.length)} of ${filteredOrbs.length} skills`;
+    }
+  }
+
+  // 4️⃣ Filter button events
+  filters.forEach(btn => {
+    btn.addEventListener('click', function () {
+      filters.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      currentFilter = this.getAttribute('data-category');
+      pageIndex = 0;
+      updatePager();
+    });
+  });
+
+  // 5️⃣ Navigation events
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      pageIndex--;
+      updatePager();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      pageIndex++;
+      updatePager();
+    });
+  }
+
+  // 6️⃣ Responsive: update on window resize
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(updatePager, 100);
+  });
+
+  // 7️⃣ Initial display
+  updatePager();
+}
+//------ 14.5 Skill animations -───────────────────────────────
+// Replace the existing initSkillsCircuitBackground function with this:
+(function initSkillsCircuitBackground() {
+  const canvas = document.getElementById('skills-bg-circuit');
+  if (!canvas) return;
+  
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes = [];
+
+  function resize() {
+    // Get computed style to account for padding
+    const parent = canvas.parentElement;
+    const style = getComputedStyle(parent);
+    
+    // Calculate dimensions minus padding
+    W = canvas.width = parent.clientWidth;
+    H = canvas.height = parent.clientHeight;
+
+    nodes = Array.from({ length: 60 }, () => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.2,
+      vy: (Math.random() - 0.5) * 0.2
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    
+    // Draw particles
+    ctx.fillStyle = 'rgba(56, 189, 248, 0.2)';
+    nodes.forEach(n => {
+      n.x += n.vx;
+      n.y += n.vy;
+      
+      // Boundary collision
+      if (n.x < 0 || n.x > W) n.vx *= -1;
+      if (n.y < 0 || n.y > H) n.vy *= -1;
+      
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, 1.5, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    
+    // Draw connections
+    ctx.strokeStyle = 'rgba(56, 189, 248, 0.2)';
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i];
+        const b = nodes[j];
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        
+        if (dist < 100) {
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+    
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  draw();
+})();
+// Add this inside the DOMContentLoaded event listener after initSkillsSection()
+function initSkillsCircuitBackground() {
+  const canvas = document.getElementById('skills-bg-circuit');
+  if (!canvas) return;
+  
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes = [];
+
+  function resize() {
+    // Direct canvas dimensions
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+
+    // Create more particles
+    nodes = Array.from({ length: 80 }, () => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      r: Math.random() * 1.5 + 0.5
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    
+    // Draw particles with glow
+    ctx.fillStyle = 'rgba(56, 189, 248, 0.4)';
+    nodes.forEach(n => {
+      n.x += n.vx;
+      n.y += n.vy;
+      
+      // Boundary collision with bounce
+      if (n.x < 0 || n.x > W) n.vx *= -1;
+      if (n.y < 0 || n.y > H) n.vy *= -1;
+      
+      // Draw particle with glow effect
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fill();
+      
+      // Add glow effect
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r * 3, 0, Math.PI * 2);
+      const gradient = ctx.createRadialGradient(
+        n.x, n.y, 0,
+        n.x, n.y, n.r * 3
+      );
+      gradient.addColorStop(0, 'rgba(56, 189, 248, 0.3)');
+      gradient.addColorStop(1, 'rgba(56, 189, 248, 0)');
+      ctx.fillStyle = gradient;
+      ctx.fill();
+    });
+    
+    // Draw connections
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i];
+        const b = nodes[j];
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        
+        if (dist < 100) {
+          const alpha = 1 - dist/100;
+          ctx.strokeStyle = `rgba(56, 189, 248, ${alpha * 0.4})`;
+          ctx.lineWidth = 0.8;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+    
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  draw();
+}
+
+// Call this after initializing the skills section
+initSkillsCircuitBackground(); 
 
   // ─── 15. Contact form submit ──────────────────────────────────────
   const form     = document.getElementById('contactForm');

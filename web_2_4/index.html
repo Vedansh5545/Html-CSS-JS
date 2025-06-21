@@ -360,55 +360,78 @@
   </div>
 </section>
 
+<!-- Skills Section Start -->
+<!-- Skills Section -->
+<section id="skills">
+  <h2 class="section-title">Technical & Soft Skills</h2>
+  
+  <!-- Filter Controls -->
+  <div class="skills-filter-bar">
+    <button class="filter-btn skills-filter-btn active" data-category="all">All</button>
+    <button class="filter-btn skills-filter-btn " data-category="programming">💻</button>
+    <button class="filter-btn skills-filter-btn" data-category="ai">🤖</button>
+    <button class="filter-btn skills-filter-btn" data-category="web">🌐</button>
+    <button class="filter-btn skills-filter-btn" data-category="tools">🧠</button>
+    <button class="filter-btn skills-filter-btn" data-category="softskills">🎓</button>
+  </div>
+  <canvas id="skills-bg-circuit"></canvas>
 
-<div id="Skills" class="container">
-      <h2 class="text-center mb-4" data-aos="fade-up">Skills</h2>
-      <div class="row row-cols-1 row-cols-md-2 g-4">
-        <!-- Python -->
-        <div class="col" data-aos="fade-right">
-          <h5>Python</h5>
-          <div class="progress skill-progress">
-            <div class="progress-bar" role="progressbar" style="width:0" data-progress="90"></div>
-          </div>
-        </div>
-        <!-- JavaScript -->
-        <div class="col" data-aos="fade-left">
-          <h5>JavaScript</h5>
-          <div class="progress skill-progress">
-            <div class="progress-bar" role="progressbar" style="width:0" data-progress="85"></div>
-          </div>
-        </div>
-        <!-- HTML/CSS -->
-        <div class="col" data-aos="fade-right">
-          <h5>HTML &amp; CSS</h5>
-          <div class="progress skill-progress">
-            <div class="progress-bar" role="progressbar" style="width:0" data-progress="90"></div>
-          </div>
-        </div>
-        <!-- TensorFlow -->
-        <div class="col" data-aos="fade-left">
-          <h5>TensorFlow</h5>
-          <div class="progress skill-progress">
-            <div class="progress-bar" role="progressbar" style="width:0" data-progress="80"></div>
-          </div>
-        </div>
-        <!-- PyTorch -->
-        <div class="col" data-aos="fade-right">
-          <h5>PyTorch</h5>
-          <div class="progress skill-progress">
-            <div class="progress-bar" role="progressbar" style="width:0" data-progress="85"></div>
-          </div>
-        </div>
-        <!-- React -->
-        <div class="col" data-aos="fade-left">
-          <h5>React</h5>
-          <div class="progress skill-progress">
-            <div class="progress-bar" role="progressbar" style="width:0" data-progress="80"></div>
-          </div>
-        </div>
-      </div>
+  <!-- Skills Grid & Nav -->
+  <div class="skills-wrapper">
+    <button id="skills-slider-prev" class="skills-nav-btn">⬆️</button>
+    
+    <div class="skills-grid">
+      <!-- Programming -->
+      <div class="skills-orb" data-category="programming">Python<br><span>⭐⭐⭐⭐⭐</span></div>
+      <div class="skills-orb" data-category="programming">HTML/CSS<br><span>⭐⭐⭐⭐⭐</span></div>
+      <div class="skills-orb" data-category="programming">C++<br><span>⭐⭐⭐⭐☆</span></div>
+      <div class="skills-orb" data-category="programming">JavaScript<br><span>⭐⭐⭐⭐☆</span></div>
+      <div class="skills-orb" data-category="programming">SQL<br><span>⭐⭐⭐⭐☆</span></div>
+      <div class="skills-orb" data-category="programming">Assembly<br><span>⭐⭐⭐⭐☆</span></div>
+      <div class="skills-orb" data-category="programming">Bash/Shell<br><span>⭐⭐⭐☆☆</span></div>
+      <div class="skills-orb" data-category="programming">Java<br><span>⭐⭐☆☆☆</span></div>
+      
+      <!-- AI/ML -->
+      <div class="skills-orb" data-category="ai">PyTorch<br><span>⭐⭐⭐⭐⭐</span></div>
+      <div class="skills-orb" data-category="ai">Data Analysis<br><span>⭐⭐⭐⭐⭐</span></div>
+      <div class="skills-orb" data-category="ai">Pandas/Numpy<br><span>⭐⭐⭐⭐⭐</span></div>
+      <div class="skills-orb" data-category="ai">TensorFlow<br><span>⭐⭐⭐⭐☆</span></div>
+      <div class="skills-orb" data-category="ai">Scikit-learn<br><span>⭐⭐⭐⭐☆</span></div>
+      <div class="skills-orb" data-category="ai">Graph Neural Networks<br><span>⭐⭐⭐⭐☆</span></div>
+      <div class="skills-orb" data-category="ai">Transformers<br><span>⭐⭐⭐⭐☆</span></div>
+      <div class="skills-orb" data-category="ai">Data Visualization<br><span>⭐⭐⭐⭐☆</span></div>
+      
+      <!-- Web -->
+      <div class="skills-orb" data-category="web">Angular<br><span>⭐⭐⭐⭐☆</span></div>
+      <div class="skills-orb" data-category="web">Firebase<br><span>⭐⭐⭐⭐☆</span></div>
+      <div class="skills-orb" data-category="web">Chrome Extension Dev<br><span>⭐⭐⭐⭐☆</span></div>
+      <div class="skills-orb" data-category="web">Bootstrap<br><span>⭐⭐⭐⭐☆</span></div>
+      <div class="skills-orb" data-category="web">Tailwind CSS<br><span>⭐⭐⭐☆☆</span></div>
+      <div class="skills-orb" data-category="web">REST APIs<br><span>⭐⭐⭐☆☆</span></div>
+      
+      <!-- Tools -->
+      <div class="skills-orb" data-category="tools">Git/GitHub<br><span>⭐⭐⭐⭐⭐</span></div>
+      <div class="skills-orb" data-category="tools">VS Code<br><span>⭐⭐⭐⭐⭐</span></div>
+      <div class="skills-orb" data-category="tools">Linux<br><span>⭐⭐⭐⭐☆</span></div>
+      <div class="skills-orb" data-category="tools">CUP & JFlex<br><span>⭐⭐⭐⭐☆</span></div>
+      <div class="skills-orb" data-category="tools">VMware/VirtualBox<br><span>⭐⭐⭐⭐☆</span></div>
+      <div class="skills-orb" data-category="tools">ROS<br><span>⭐⭐☆☆☆</span></div>
+      
+      <!-- Soft Skills -->
+      <div class="skills-orb" data-category="softskills">Critical Thinking<br><span>⭐⭐⭐⭐⭐</span></div>
+      <div class="skills-orb" data-category="softskills">Problem Solving<br><span>⭐⭐⭐⭐⭐</span></div>
+      <div class="skills-orb" data-category="softskills">Team Collaboration<br><span>⭐⭐⭐⭐⭐</span></div>
+      <div class="skills-orb" data-category="softskills">Communication<br><span>⭐⭐⭐⭐☆</span></div>
+      <div class="skills-orb" data-category="softskills">Public Speaking<br><span>⭐⭐⭐⭐☆</span></div>
     </div>
-  </section>
+    
+    <button id="skills-slider-next" class="skills-nav-btn">⬇️</button>
+  </div>
+  
+  <div class="debug-info"></div>
+</section>
+
+
 
   <section id="certifications" class="py-5 bg-transparent section">
     <div class="container">
@@ -504,12 +527,13 @@
       </div>
     </div>
   </section>
+  
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="script.js"></script>
+  <script src="script.js" ></script>
 </body>
 </html>
