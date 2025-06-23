@@ -744,13 +744,263 @@ function initSkillsSection() {
   animate();
 })();
 
+// Gentle bubble-like steam along the entire bottom
+function generateWideSteam() {
+  const container = document.getElementById('steam-container');
+  const steam = document.createElement('div');
+  steam.className = 'steam';
+  steam.style.left = Math.random() * 100 + '%';
+  steam.style.width = `${Math.random() * 10 + 10}px`;
+  steam.style.height = steam.style.width;
+  steam.style.animationDuration = `${Math.random() * 2 + 2}s`;
+  container.appendChild(steam);
+  setTimeout(() => steam.remove(), 4000);
+}
+setInterval(generateWideSteam, 200); // emits steam at intervals
 
-  // ─── 15. Contact form submit ──────────────────────────────────────
-  const form     = document.getElementById('contactForm');
+  // ─── 15. certifications section ────────────────────────────────
+
+  // Floating Beans
+  function createBean() {
+    const bean = document.createElement('div');
+    bean.className = 'coffee-bean';
+    bean.style.top = Math.random() * 100 + 'vh';
+    bean.style.left = Math.random() * 100 + 'vw';
+    document.body.appendChild(bean);
+    setTimeout(() => bean.remove(), 8000);
+  }
+  setInterval(createBean, 1000);
+
+  // Floating Network Nodes
+  function createNode() {
+    const node = document.createElement('div');
+    node.className = 'network-node';
+    node.style.top = Math.random() * 100 + 'vh';
+    node.style.left = Math.random() * 100 + 'vw';
+    document.body.appendChild(node);
+    setTimeout(() => node.remove(), 3000);
+  }
+  setInterval(createNode, 300);
+
+  // Side Rings
+  function createSideRing(side = 'left') {
+    const ring = document.createElement('div');
+    ring.className = 'side-deco';
+    ring.style.top = Math.random() * 80 + 10 + 'vh';
+    ring.style.left = side === 'left' ? '2%' : '';
+    ring.style.right = side === 'right' ? '2%' : '';
+    document.getElementById('certifications').appendChild(ring);
+    setTimeout(() => ring.remove(), 5000);
+  }
+  setInterval(() => createSideRing('left'), 3000);
+  setInterval(() => createSideRing('right'), 3500);
+
+  // Wide Bottom Steam
+  function generateWideSteam() {
+    const container = document.getElementById('steam-container');
+    const steam = document.createElement('div');
+    steam.className = 'steam';
+    steam.style.left = Math.random() * 100 + '%';
+    steam.style.bottom = '0';
+    container.appendChild(steam);
+    setTimeout(() => steam.remove(), 4000);
+  }
+  setInterval(generateWideSteam, 300);
+
+
+
+  // ─── 17. Contact form submit ──────────────────────────────────────
+ // Contact form and alert setup
+const form = document.getElementById('contactForm');
+const alertBox = document.getElementById('contactAlert');
+const modal = document.getElementById('thankYouModal');
+const closeBtn = document.querySelector('.matrix-modal .close-btn');
+
+// Matrix particles
+function createMatrixParticle() {
+  const dot = document.createElement('div');
+  dot.style.position = 'fixed';
+  dot.style.left = `${Math.random() * window.innerWidth}px`;
+  dot.style.bottom = '0';
+  dot.style.width = '2px';
+  dot.style.height = '10px';
+  dot.style.background = '#33ff33';
+  dot.style.opacity = Math.random() * 0.5 + 0.3;
+  dot.style.zIndex = 0;
+  dot.style.animation = `matrixFall ${Math.random() * 2 + 3}s linear forwards`;
+  document.body.appendChild(dot);
+  setTimeout(() => dot.remove(), 5000);
+}
+setInterval(createMatrixParticle, 100);
+
+// Add keyframe animation to document
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes matrixFall {
+    0% { transform: translateY(0); opacity: 0.5; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+  }
+`;
+document.head.appendChild(style);
+
+// Form submit handler
+form?.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  // Hide alert if present
+  alertBox?.classList.add('d-none');
+
+  // Show modal
+  modal.style.display = 'flex';
+
+  // Reset form fields
+  form.reset();
+});
+
+// Modal close handler (click on ×)
+closeBtn?.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+
+// Modal background click to close
+window.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.style.display = 'none';
+  }
+});
+document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert('Thank you for your message! I will get back to you soon.');
+  this.reset();
+});
+// ─── Contact Background Animation ─────────────────────────────────
+(function initContactCanvas() {
+  const canvas = document.getElementById('contact-bg');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+    particles = Array.from({ length: 40 }, () => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.2,
+      vy: (Math.random() - 0.5) * 0.2,
+      r: Math.random() * 1.5 + 0.5
+    }));
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = 'rgba(14,202,255,0.2)';
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+})();
+// Floating particles for contact background
+(function initContactParticles() {
+  const canvas = document.getElementById('contact-bg');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes;
+
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+    nodes = Array.from({ length: 50 }, () => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      r: Math.random() * 1.5 + 0.5
+    }));
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    nodes.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0,255,0,0.3)';
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+})();
+
+// Form Submission Confirmation
+document.getElementById('contactForm')?.addEventListener('submit', function (e) {
+  e.preventDefault();
   const alertBox = document.getElementById('contactAlert');
-  form?.addEventListener('submit', e=>{
-    e.preventDefault();
-    alertBox?.classList.remove('d-none');
-    form.reset();
-  });
+  alertBox.classList.remove('hidden');
+  this.reset();
+});
+// Contact form matrix-style background
+(function initContactParticles() {
+  const canvas = document.getElementById('contact-bg');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles;
+
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+    particles = Array.from({ length: 70 }, () => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vy: Math.random() * 0.5 + 0.2,
+      r: Math.random() * 1 + 0.5
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => {
+      p.y += p.vy;
+      if (p.y > H) {
+        p.y = 0;
+        p.x = Math.random() * W;
+      }
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+      ctx.fillStyle = 'rgba(0,255,0,0.5)';
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  draw();
+})();
+
+// In-page confirmation popup
+document.getElementById('contactForm')?.addEventListener('submit', function (e) {
+  e.preventDefault();
+  document.getElementById('contactAlert')?.classList.remove('hidden');
+  this.reset();
+});
+
 });
