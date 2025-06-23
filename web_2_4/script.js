@@ -618,160 +618,132 @@ function initSkillsSection() {
   updatePager();
 }
 //------ 14.5 Skill animations -───────────────────────────────
-// Replace the existing initSkillsCircuitBackground function with this:
-(function initSkillsCircuitBackground() {
-  const canvas = document.getElementById('skills-bg-circuit');
-  if (!canvas) return;
-  
-  const ctx = canvas.getContext('2d');
-  let W, H, nodes = [];
+// script.js
 
+// Electric Circuit Pulse background for the Skills section
+;(function() {
+  const canvas = document.getElementById('skills-bg');
+  const ctx    = canvas.getContext('2d');
+  let   W, H;
+
+  // Resize canvas to fill the #skills section
   function resize() {
-    // Get computed style to account for padding
-    const parent = canvas.parentElement;
-    const style = getComputedStyle(parent);
-    
-    // Calculate dimensions minus padding
-    W = canvas.width = parent.clientWidth;
-    H = canvas.height = parent.clientHeight;
-
-    nodes = Array.from({ length: 60 }, () => ({
-      x: Math.random() * W,
-      y: Math.random() * H,
-      vx: (Math.random() - 0.5) * 0.2,
-      vy: (Math.random() - 0.5) * 0.2
-    }));
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-    
-    // Draw particles
-    ctx.fillStyle = 'rgba(56, 189, 248, 0.2)';
-    nodes.forEach(n => {
-      n.x += n.vx;
-      n.y += n.vy;
-      
-      // Boundary collision
-      if (n.x < 0 || n.x > W) n.vx *= -1;
-      if (n.y < 0 || n.y > H) n.vy *= -1;
-      
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, 1.5, 0, Math.PI * 2);
-      ctx.fill();
-    });
-    
-    // Draw connections
-    ctx.strokeStyle = 'rgba(56, 189, 248, 0.2)';
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        const a = nodes[i];
-        const b = nodes[j];
-        const dx = a.x - b.x;
-        const dy = a.y - b.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        
-        if (dist < 100) {
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-        }
-      }
-    }
-    
-    requestAnimationFrame(draw);
-  }
-
-  window.addEventListener('resize', resize);
-  resize();
-  draw();
-})();
-// Add this inside the DOMContentLoaded event listener after initSkillsSection()
-function initSkillsCircuitBackground() {
-  const canvas = document.getElementById('skills-bg-circuit');
-  if (!canvas) return;
-  
-  const ctx = canvas.getContext('2d');
-  let W, H, nodes = [];
-
-  function resize() {
-    // Direct canvas dimensions
-    W = canvas.width = canvas.offsetWidth;
+    W = canvas.width  = canvas.offsetWidth;
     H = canvas.height = canvas.offsetHeight;
-
-    // Create more particles
-    nodes = Array.from({ length: 80 }, () => ({
-      x: Math.random() * W,
-      y: Math.random() * H,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3,
-      r: Math.random() * 1.5 + 0.5
-    }));
   }
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-    
-    // Draw particles with glow
-    ctx.fillStyle = 'rgba(56, 189, 248, 0.4)';
-    nodes.forEach(n => {
-      n.x += n.vx;
-      n.y += n.vy;
-      
-      // Boundary collision with bounce
-      if (n.x < 0 || n.x > W) n.vx *= -1;
-      if (n.y < 0 || n.y > H) n.vy *= -1;
-      
-      // Draw particle with glow effect
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-      ctx.fill();
-      
-      // Add glow effect
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, n.r * 3, 0, Math.PI * 2);
-      const gradient = ctx.createRadialGradient(
-        n.x, n.y, 0,
-        n.x, n.y, n.r * 3
-      );
-      gradient.addColorStop(0, 'rgba(56, 189, 248, 0.3)');
-      gradient.addColorStop(1, 'rgba(56, 189, 248, 0)');
-      ctx.fillStyle = gradient;
-      ctx.fill();
-    });
-    
-    // Draw connections
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        const a = nodes[i];
-        const b = nodes[j];
-        const dx = a.x - b.x;
-        const dy = a.y - b.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        
-        if (dist < 100) {
-          const alpha = 1 - dist/100;
-          ctx.strokeStyle = `rgba(56, 189, 248, ${alpha * 0.4})`;
-          ctx.lineWidth = 0.8;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-        }
-      }
-    }
-    
-    requestAnimationFrame(draw);
-  }
-
   window.addEventListener('resize', resize);
   resize();
-  draw();
-}
 
-// Call this after initializing the skills section
-initSkillsCircuitBackground(); 
+  // Color palette for pulses and sparks
+  const COLORS = [
+    '#0ea5e9', // cyan
+    '#8b5cf6', // purple
+    '#22c55e', // green
+    '#f43f5e'  // hot pink
+  ];
+
+  // Pulsing line class
+  class PulseLine {
+    constructor() {
+      this.reset();
+    }
+    reset() {
+      this.vertical = Math.random() < 0.5;
+      if (this.vertical) {
+        this.x     = Math.random() * W;
+        this.y     = 0;
+        this.len   = H * (0.2 + Math.random() * 0.6);
+        this.speed = 1 + Math.random() * 1.5;
+      } else {
+        this.x     = 0;
+        this.y     = Math.random() * H;
+        this.len   = W * (0.2 + Math.random() * 0.6);
+        this.speed = 1 + Math.random() * 1.5;
+      }
+      this.color   = COLORS[Math.floor(Math.random() * COLORS.length)];
+      this.opacity = 0;
+      this.maxOp   = 0.3 + Math.random() * 0.6;  // brighter pulses
+      this.phase   = 0;
+    }
+    update() {
+      this.phase += 0.02 * this.speed;
+      this.opacity = Math.abs(Math.sin(this.phase)) * this.maxOp;
+      if (this.vertical) {
+        this.y += this.speed;
+        if (this.y - this.len > H) this.reset();
+      } else {
+        this.x += this.speed;
+        if (this.x - this.len > W) this.reset();
+      }
+    }
+    draw() {
+      ctx.save();
+      ctx.strokeStyle = this.color;
+      ctx.globalAlpha = this.opacity;
+      ctx.lineWidth   = 2;    // thicker lines
+      ctx.shadowBlur  = 12;   // stronger glow
+      ctx.shadowColor = this.color;
+      ctx.beginPath();
+      if (this.vertical) {
+        ctx.moveTo(this.x, this.y - this.len);
+        ctx.lineTo(this.x, this.y);
+      } else {
+        ctx.moveTo(this.x - this.len, this.y);
+        ctx.lineTo(this.x, this.y);
+      }
+      ctx.stroke();
+      ctx.restore();
+    }
+  }
+
+  // Spark (glowing dot) class
+  class Spark {
+    constructor() {
+      this.reset();
+    }
+    reset() {
+      this.x       = Math.random() * W;
+      this.y       = Math.random() * H;
+      this.radius  = 2 + Math.random() * 3;      // larger sparks
+      this.life    = 0;
+      this.maxLife = 50 + Math.random() * 50;
+      this.color   = COLORS[Math.floor(Math.random() * COLORS.length)];
+    }
+    update() {
+      this.life++;
+      if (this.life > this.maxLife) this.reset();
+    }
+    draw() {
+      const alpha = 1 - this.life / this.maxLife;
+      ctx.save();
+      ctx.fillStyle   = this.color;
+      ctx.globalAlpha = alpha * 0.8;            // brighter
+      ctx.shadowBlur  = 8;                      // stronger glow
+      ctx.shadowColor = this.color;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  // Create pools of lines and sparks
+  const LINES_COUNT  = 30;
+  const SPARKS_COUNT = 80;
+  const lines  = Array.from({ length: LINES_COUNT }, () => new PulseLine());
+  const sparks = Array.from({ length: SPARKS_COUNT }, () => new Spark());
+
+  // Animation loop
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+    lines.forEach(l => { l.update(); l.draw(); });
+    sparks.forEach(s => { s.update(); s.draw(); });
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+})();
+
 
   // ─── 15. Contact form submit ──────────────────────────────────────
   const form     = document.getElementById('contactForm');
