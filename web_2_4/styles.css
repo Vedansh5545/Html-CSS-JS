@@ -1358,96 +1358,7 @@ header#navbar {
 
 /* Contact */
 /* Contact Section - Cyber Glow */
-.cyber-contact-section {
-  background: #0d1117;
-  color: #f0f8ff;
-  padding: 5rem 2rem;
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.cyber-title {
-  text-align: center;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2.8rem;
-  margin-bottom: 2.5rem;
-  background: linear-gradient(90deg, #0ff, #2af598);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: glowTitle 2s ease-in-out infinite alternate;
-}
-
-@keyframes glowTitle {
-  from { text-shadow: 0 0 10px #0ff; }
-  to   { text-shadow: 0 0 20px #2af598; }
-}
-
-.cyber-input {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid #2af598;
-  color: #f0f8ff;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 8px transparent;
-}
-
-.cyber-input:focus {
-  border-color: #0ff;
-  box-shadow: 0 0 12px #0ff;
-  background: rgba(255, 255, 255, 0.1);
-  outline: none;
-}
-
-.cyber-btn {
-  background: transparent;
-  border: 1px solid #2af598;
-  color: #f0f8ff;
-  padding: 0.7rem 1.5rem;
-  font-weight: 600;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.cyber-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, #0ff, #2af598);
-  transition: all 0.4s ease;
-  z-index: -1;
-}
-
-.cyber-btn:hover::before {
-  left: 0;
-}
-
-.cyber-btn:hover {
-  color: #0d1117;
-  box-shadow: 0 0 15px #2af598;
-}
-
-.cyber-alert {
-  background: rgba(0, 255, 255, 0.1);
-  border-left: 5px solid #0ff;
-  padding: 1rem;
-  border-radius: 8px;
-  color: #0ff;
-  font-weight: 500;
-  text-align: center;
-  animation: fadeIn 0.6s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+/* ─── Contact Section Base ───────────────────────────── */
 .matrix-contact-section {
   position: relative;
   padding: 6rem 2rem;
@@ -1457,6 +1368,7 @@ header#navbar {
   z-index: 1;
 }
 
+/* ─── Layout ───────────────────────────── */
 .contact-container {
   display: flex;
   justify-content: center;
@@ -1467,6 +1379,7 @@ header#navbar {
   margin: auto;
 }
 
+/* ─── Headshot ───────────────────────────── */
 .avatar-column {
   flex: 1 1 300px;
   display: flex;
@@ -1476,11 +1389,14 @@ header#navbar {
 
 .contact-avatar {
   width: 180px;
+  height: 180px;
   border-radius: 50%;
+  object-fit: cover;
   box-shadow: 0 0 20px #33ff33, 0 0 40px #00ff88;
   animation: pulseGlow 3s infinite ease-in-out;
 }
 
+/* ─── Form ───────────────────────────── */
 .form-column {
   flex: 1 1 500px;
   display: flex;
@@ -1552,6 +1468,7 @@ header#navbar {
   color: #000;
 }
 
+/* ─── Alert ───────────────────────────── */
 .matrix-alert {
   display: none;
   margin-top: 1rem;
@@ -1564,73 +1481,23 @@ header#navbar {
   font-size: 0.95rem;
 }
 
+/* ─── Canvas Background ───────────────────────────── */
+#contact-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.08;
+}
+
+/* ─── Effects ───────────────────────────── */
 @keyframes pulseGlow {
   0% { box-shadow: 0 0 20px #33ff33, 0 0 40px #00ff88; }
   50% { box-shadow: 0 0 30px #00ff88, 0 0 60px #33ff33; }
   100% { box-shadow: 0 0 20px #33ff33, 0 0 40px #00ff88; }
 }
-/* Modal Overlay */
-.matrix-modal {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(5px);
-  justify-content: center;
-  align-items: center;
-}
 
-/* Modal Box */
-.matrix-modal-content {
-  background: #050505;
-  border: 2px solid #33ff33;
-  padding: 2rem;
-  text-align: center;
-  border-radius: 12px;
-  box-shadow: 0 0 20px #33ff33;
-  color: #ccffcc;
-  font-family: 'Orbitron', sans-serif;
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-/* Animation */
-@keyframes fadeIn {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-#contact-bg {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.15;
-}
-/* Glow Effect Around Headshot */
-.glow-green {
-  box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00;
-}
-
-/* Neon Text */
-.neon-text {
-  text-shadow:
-    0 0 2px #00ff00,
-    0 0 6px #00ff00,
-    0 0 12px #00ff00;
-}
-
-/* Contact Canvas */
-#contact-bg {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  opacity: 0.06;
-  z-index: 0;
-  pointer-events: none;
-}
-/* Neon glow text */
 .neon-text {
   text-shadow:
     0 0 4px #00ff00,
@@ -1638,14 +1505,78 @@ header#navbar {
     0 0 16px #00ff00;
 }
 
-/* Green avatar glow */
 .glow-green {
   box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
 }
+/* Fix container padding to prevent overlap with other sections */
+.matrix-contact-section {
+  position: relative;
+  padding: 8rem 2rem 6rem;
+  background: #050505;
+  color: #ccffcc;
+  overflow: hidden;
+  z-index: 1;
+}
 
-/* Matrix-style canvas */
+/* Prevent form field overflow */
+.matrix-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Ensure inputs and textarea don't overflow */
+.matrix-form input,
+.matrix-form textarea {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Ensure canvas background doesn't bleed into above section */
 #contact-bg {
-  background: transparent;
-  opacity: 0.06;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 0;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+/* Avatar image fallback fix */
+.contact-avatar {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #33ff33, 0 0 40px #00ff88;
+  background-color: #0f0; /* fallback circle glow */
+}
+.matrix-alert {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #16a34a;
+  color: white;
+  border-radius: 8px;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  transition: opacity 0.4s ease;
+}
+.d-none {
+  display: none;
+}
+.center-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.center-avatar img {
+  border-radius: 50%;
+  box-shadow: 0 0 30px 5px #00ff88;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
 }
